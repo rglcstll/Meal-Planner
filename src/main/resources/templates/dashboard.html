@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Planner Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/dashboard.css}">
+
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        // This variable will hold the application's context path, e.g., "/demo-0.0.1-SNAPSHOT/" or "/" if deployed at root.
+        // It's crucial for making correct AJAX calls from JavaScript when the app is not deployed at the server root.
+        var R_APP_CONTEXT_PATH = /*[[@{/}]]*/ '';
+        /*]]>*/
+    </script>
+    </head>
+<body>
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <h1><i class="fas fa-utensils"></i>Meal Planner</h1>
+            <div class="user-controls">
+                <div class="date-picker">
+                    <label for="mealDate">Week Starting:</label>
+                    <input type="date" id="mealDate">
+                    <button onclick="fetchMealPlanForDate(document.getElementById('mealDate').value)" class="btn btn-secondary btn-sm">Load Saved</button>
+                    <button id="saveCurrentPlanBtn" class="btn btn-success btn-sm">Save Current Plan</button>
+                </div>
+				<a th:href="@{/user/logout}" class="btn btn-logout btn-sm"><i class="fas fa-sign-out-alt"></i>Logout</a>
+            </div>
+        </header>
+
+        <nav class="dashboard-nav">
+            <ul>
+                <li><a href="#" class="tab-link active" data-target="plan"><i class="fas fa-calendar-alt"></i> Plan</a></li>
+                <li><a href="#" class="tab-link" data-target="cook"><i class="fas fa-utensils"></i> Cook</a></li>
+                <li><a href="#" class="tab-link" data-target="shop"><i class="fas fa-shopping-cart"></i> Shop</a></li>
+                <li><a href="#" class="tab-link" data-target="nutrition"><i class="fas fa-chart-pie"></i> Nutrition</a></li>
+            </ul>
+        </nav>
+
+        <main class="dashboard-content">
+            <section id="plan" class="tab-content active">
+                <div class="controls-panel">
+                    <div class="meal-preferences">
+                        <h3><i class="fas fa-sliders-h"></i> Generate Meal Plan</h3>
+                        <div class="form-group">
+                            <label for="goalSelect">Nutrition Goal:</label>
+                            <select id="goalSelect" class="form-control">
+                                <option value="">Select a goal</option>
+                                <option value="balanced">Balanced Diet</option>
+                                <option value="high-protein">High Protein</option>
+                                <option value="low-carb">Low Carb</option>
+                                <option value="low-fat">Low Fat</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="dietPreference">Dietary Preference:</label>
+                            <select id="dietPreference" class="form-control" disabled>
+                                <option value="standard">Standard</option>
+                                <option value="vegetarian">Vegetarian</option>
+                                <option value="vegan">Vegan</option>
+                                <option value="paleo">Paleo</option>
+                                <option value="keto">Keto</option>
+                            </select>
+                        </div>
+                        <div class="allergy-preferences">
+                            <h3><i class="fas fa-exclamation-circle"></i> Allergies</h3>
+                            <div class="form-group">
+                                <label for="allergySelect">Select Allergies:</label>
+                                <select id="allergySelect" class="form-control">
+                                    <option value="">Select an allergy</option>
+                                </select>
+                            </div>
+                            <div class="selected-allergies">
+                                <h4>Your Allergies:</h4>
+                                <ul id="selectedAllergiesList" class="allergy-list">
+                                </ul>
+                            </div>
+                            <button id="addAllergyBtn" class="btn btn-secondary"><i class="fas fa-plus"></i> Add Allergy</button>
+
+                            <div class="allergy-filter-toggle">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="allergyFilterToggle">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                                <span class="toggle-label" onclick="document.getElementById('allergyFilterToggle').click();">Filter meals by allergies</span>
+                            </div>
+                        </div>
+                        <button id="generateMeal" class="btn btn-primary"><i class="fas fa-magic"></i> Generate Meal Plan</button>
+                    </div>
+
+                    <div class="add-meal-form">
+                        <h3><i class="fas fa-plus-circle"></i> Add Custom Meal</h3>
+                        <div class="form-group">
+                            <label for="newMeal">Meal Name:</label>
+                            <input type="text" id="newMeal" class="form-control" placeholder="Enter meal name">
+                        </div>
+                        <div class="form-group">
+                            <label for="mealCategory">Meal Type:</label>
+                            <select id="mealCategory" class="form-control">
+                                <option value="breakfast">Breakfast</option>
+                                <option value="lunch">Lunch</option>
+                                <option value="dinner">Dinner</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="mealDay">Day:</label>
+                            <select id="mealDay" class="form-control">
+                                <option value="monday">Monday</option>
+                                <option value="tuesday">Tuesday</option>
+                                <option value="wednesday">Wednesday</option>
+                                <option value="thursday">Thursday</option>
+                                <option value="friday">Friday</option>
+                                <option value="saturday">Saturday</option>
+                                <option value="sunday">Sunday</option>
+                            </select>
+                        </div>
+                        <button onclick="addMeal()" class="btn btn-secondary"><i class="fas fa-plus"></i> Add Meal</button>
+                    </div>
+                </div>
+
+                <div class="meal-calendar">
+                    <div class="day-column" data-day="monday">
+                        <div class="day-header">Monday</div>
+                        <div class="meal-slot" data-meal="breakfast"></div>
+                        <div class="meal-slot" data-meal="lunch"></div>
+                        <div class="meal-slot" data-meal="dinner"></div>
+                    </div>
+                    <div class="day-column" data-day="tuesday">
+                        <div class="day-header">Tuesday</div>
+                        <div class="meal-slot" data-meal="breakfast"></div>
+                        <div class="meal-slot" data-meal="lunch"></div>
+                        <div class="meal-slot" data-meal="dinner"></div>
+                    </div>
+                    <div class="day-column" data-day="wednesday">
+                        <div class="day-header">Wednesday</div>
+                        <div class="meal-slot" data-meal="breakfast"></div>
+                        <div class="meal-slot" data-meal="lunch"></div>
+                        <div class="meal-slot" data-meal="dinner"></div>
+                    </div>
+                    <div class="day-column" data-day="thursday">
+                        <div class="day-header">Thursday</div>
+                        <div class="meal-slot" data-meal="breakfast"></div>
+                        <div class="meal-slot" data-meal="lunch"></div>
+                        <div class="meal-slot" data-meal="dinner"></div>
+                    </div>
+                    <div class="day-column" data-day="friday">
+                        <div class="day-header">Friday</div>
+                        <div class="meal-slot" data-meal="breakfast"></div>
+                        <div class="meal-slot" data-meal="lunch"></div>
+                        <div class="meal-slot" data-meal="dinner"></div>
+                    </div>
+                    <div class="day-column" data-day="saturday">
+                        <div class="day-header">Saturday</div>
+                        <div class="meal-slot" data-meal="breakfast"></div>
+                        <div class="meal-slot" data-meal="lunch"></div>
+                        <div class="meal-slot" data-meal="dinner"></div>
+                    </div>
+                    <div class="day-column" data-day="sunday">
+                        <div class="day-header">Sunday</div>
+                        <div class="meal-slot" data-meal="breakfast"></div>
+                        <div class="meal-slot" data-meal="lunch"></div>
+                        <div class="meal-slot" data-meal="dinner"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="cook" class="tab-content">
+                 <div class="recipe-selector">
+                    <h3><i class="fas fa-book-open"></i> Select a Meal to Cook</h3>
+                    <div class="form-group">
+                        <label for="selectedMeal">Choose a meal:</label>
+                        <select id="selectedMeal" class="form-control" onchange="loadCookingInstructions()"> <option value="">Choose a meal</option>
+                            </select>
+                    </div>
+                    </div>
+                <div class="recipe-details">
+                    <h2 id="recipeName">Recipe Name</h2>
+                    <div class="recipe-meta">
+                        <span id="prepTime"><i class="fas fa-clock"></i> Prep: ? min</span>
+                        <span id="cookTime"><i class="fas fa-fire"></i> Cook: ? min</span>
+                        <span id="servings"><i class="fas fa-user"></i> Serves: ?</span>
+                        <span id="difficulty"><i class="fas fa-chart-line"></i> Difficulty: ?</span>
+                    </div>
+
+                    <div id="allergyWarning" class="allergy-warning" style="display: none;">
+                        </div>
+
+                    <div class="recipe-content">
+                        <div class="ingredients">
+                            <h3><i class="fas fa-list"></i> Ingredients</h3>
+                            <ul id="ingredientsList"></ul>
+                        </div>
+                        <div class="instructions">
+                            <h3><i class="fas fa-tasks"></i> Instructions</h3>
+                            <ol id="cookingSteps"></ol>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="shop" class="tab-content">
+                 <div class="grocery-header">
+                    <h2><i class="fas fa-shopping-basket"></i> Smart Shopping List</h2>
+                    <div class="grocery-actions">
+                        <button id="generateShoppingListBtn" class="btn btn-primary"><i class="fas fa-sync-alt"></i> Generate from Plan</button>
+                        <button onclick="printGroceryList()" class="btn btn-secondary"><i class="fas fa-print"></i> Print</button>
+                        <button onclick="exportToShoppingApp()" class="btn btn-secondary"><i class="fas fa-share-square"></i> Export</button>
+                    </div>
+                </div>
+                <div class="grocery-summary">
+                    <div class="summary-stats" style="display: flex; gap: 2rem;">
+                        <div class="stat-item">
+                            <h3>Total Items</h3>
+                            <p><span id="totalItems">0</span></p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>Estimated Cost</h3>
+                            <p><span id="totalCost">₱0.00</span></p>
+                        </div>
+                    </div>
+                    <div id="shoppingListStatus" class="shopping-status" style="margin-top: 0.5rem; font-size: 0.9em; color: #666;"></div>
+                </div>
+                <div class="grocery-categories">
+                    <div class="grocery-category"><h3><i class="fas fa-carrot"></i> Produce</h3><ul id="produceList" class="grocery-items"></ul></div>
+                    <div class="grocery-category"><h3><i class="fas fa-drumstick-bite"></i> Meat & Seafood</h3><ul id="meatList" class="grocery-items"></ul></div>
+                    <div class="grocery-category"><h3><i class="fas fa-cheese"></i> Dairy & Eggs</h3><ul id="dairyList" class="grocery-items"></ul></div>
+                    <div class="grocery-category"><h3><i class="fas fa-bread-slice"></i> Bakery</h3><ul id="bakeryList" class="grocery-items"></ul></div>
+                    <div class="grocery-category"><h3><i class="fas fa-shopping-basket"></i> Pantry</h3><ul id="pantryList" class="grocery-items"></ul></div>
+                    <div class="grocery-category"><h3><i class="fas fa-ellipsis-h"></i> Other</h3><ul id="otherList" class="grocery-items"></ul></div>
+                </div>
+            </section>
+
+            <section id="nutrition" class="tab-content">
+                <div class="nutrition-header">
+                    <h2><i class="fas fa-chart-pie"></i> Nutrition Summary</h2>
+                </div>
+                <div id="nutritionSummary" class="nutrition-summary-container">
+                    </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <p>&copy; <span id="currentYear"></span> Meal Planner. All rights reserved.</p> <div class="footer-links">
+                    <a href="#">About</a>
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                    <a href="#">Contact</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <div id="benefitModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeBenefitModal()">&times;</span>
+            <h3 id="benefitMealName">Meal Name</h3>
+            <h4>Potential Benefits:</h4>
+            <p id="benefitMealDescription">Benefit description will appear here.</p>
+        </div>
+    </div>
+    <div id="notification" style="display:none;"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script th:src="@{/js/dashboard.js}"></script>
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

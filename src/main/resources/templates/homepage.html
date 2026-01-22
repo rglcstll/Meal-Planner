@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Planner - Meal Plans</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" th:href="@{/css/homepage.css}">
+</head>
+<body>
+    <nav>
+        <div class="container nav-container">
+            <a th:href="@{/}" class="logo">
+                <i class="fas fa-utensils"></i> Meal Planner
+            </a>
+            <ul class="nav-links">
+                <li><a href="meal-plans.html" class="nav-button active">Meal Plans</a></li>
+                <li><a href="recipes.html" class="nav-button">Recipes</a></li>
+                <li><a href="nutrition.html" class="nav-button">Nutrition</a></li>
+                <li><a href="about.html" class="nav-button">About</a></li>
+            </ul>
+            <div class="auth-btns">
+                <a th:href="@{/user/login}" class="btn">Login</a>
+                <a th:href="@{/user/register}" class="btn">Signup</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h1>Meal Plans</h1>
+            <p>Choose from our expertly crafted meal plans or create your own customized plan to fit your lifestyle and goals.</p>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <h2 class="section-title">Our Meal Plans</h2>
+
+            <div class="plans-container">
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>Weight Loss</h3>
+                        <p>Healthy, balanced meals for gradual weight loss</p>
+                    </div>
+                    <div class="plan-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> 1500-1800 calories per day</li>
+                            <li><i class="fas fa-check"></i> High protein, moderate carbs</li>
+                            <li><i class="fas fa-check"></i> Weekly grocery lists</li>
+                            <li><i class="fas fa-check"></i> 40+ recipes to choose from</li>
+                            <li><i class="fas fa-check"></i> Meal prep guides</li>
+                        </ul>
+                    </div>
+                    <div class="plan-footer">
+                        <a th:href="@{/user/register}" class="btn">Get Started</a>
+                    </div>
+                </div>
+
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>Muscle Building</h3>
+                        <p>Protein-rich meals to support muscle growth</p>
+                    </div>
+                    <div class="plan-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> 2500-3000 calories per day</li>
+                            <li><i class="fas fa-check"></i> High protein, high carbs</li>
+                            <li><i class="fas fa-check"></i> Weekly grocery lists</li>
+                            <li><i class="fas fa-check"></i> 35+ recipes to choose from</li>
+                            <li><i class="fas fa-check"></i> Post-workout meal options</li>
+                        </ul>
+                    </div>
+                    <div class="plan-footer">
+                        <a th:href="@{/user/register}" class="btn">Get Started</a>
+                    </div>
+                </div>
+
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>Vegetarian</h3>
+                        <p>Plant-based meals rich in nutrients</p>
+                    </div>
+                    <div class="plan-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> 1800-2200 calories per day</li>
+                            <li><i class="fas fa-check"></i> Plant-based protein sources</li>
+                            <li><i class="fas fa-check"></i> Weekly grocery lists</li>
+                            <li><i class="fas fa-check"></i> 50+ recipes to choose from</li>
+                            <li><i class="fas fa-check"></i> Nutrition guides</li>
+                        </ul>
+                    </div>
+                    <div class="plan-footer">
+                        <a th:href="@{/user/register}" class="btn">Get Started</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="custom-plan">
+                <h3>Create Your Custom Plan</h3>
+                <p>Can't find what you're looking for? Create your own personalized meal plan based on your preferences, dietary restrictions, and health goals.</p>
+                <a th:href="@{/user/register}" class="btn">Start Building</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a th:href="@{/about.html}">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Features</h4>
+                    <ul>
+                        <li><a th:href="@{/meal-plans.html}">Meal Plans</a></li>
+                        <li><a th:href="@{/nutrition.html}">Nutrition Tracking</a></li>
+                        <li><a th:href="@{/recipes.html}">Recipe Database</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Meal Planner | All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+    </body>
+</html>

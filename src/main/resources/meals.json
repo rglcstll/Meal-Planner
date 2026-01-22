@@ -1,0 +1,839 @@
+[
+  {
+    "name": "Scrambled Eggs & Toast",
+    "nutrition": {"calories": 375, "protein": 20, "carbs": 20, "fat": 27},
+    "ingredientNames": ["Large Eggs", "Butter", "Salt", "Bread Slices"],
+    "instructions": "In a bowl, whisk the eggs with a pinch of salt.\nHeat 1/2 tablespoon of butter in a non-stick skillet over medium heat.\nPour in the eggs and stir gently until they are softly scrambled.\nToast the bread slices and spread butter if desired.\nServe the scrambled eggs over the toast.",
+    "dietaryTags": ["Standard", "Vegetarian", "Breakfast"],
+    "allergens": ["Eggs", "Dairy", "Gluten"],
+    "benefitDescription": "Excellent source of protein for muscle maintenance and provides sustained energy from carbohydrates in toast."
+  },
+  {
+    "name": "Chicken Caesar Salad",
+    "nutrition": {"calories": 450, "protein": 35, "carbs": 10, "fat": 28},
+    "ingredientNames": ["Romaine Lettuce", "Cooked Boneless, Skinless Chicken Breasts", "Finely Shredded Parmesan Cheese", "Seasoned Croutons", "Creamy Caesar Dressing"],
+    "instructions": "In a large bowl, combine the romaine lettuce, sliced chicken, Parmesan cheese, and croutons.\nDrizzle with Caesar dressing and toss to coat evenly.\nServe immediately.",
+    "dietaryTags": ["Standard", "High-Protein", "Lunch", "Dinner"],
+    "allergens": ["Dairy", "Gluten", "Fish"],
+    "benefitDescription": "High in lean protein from chicken, supporting muscle growth and repair. Romaine lettuce offers vitamins A and K."
+  },
+  {
+    "name": "Spaghetti Bolognese",
+    "nutrition": {"calories": 600, "protein": 25, "carbs": 75, "fat": 20},
+    "ingredientNames": ["Olive Oil", "Garlic Cloves", "Onion", "Ground Beef", "Dry Red Wine", "Beef Bouillon Cubes", "Crushed Tomatoes", "Tomato Paste", "Worcestershire Sauce", "Sugar", "Salt", "Black Pepper", "Spaghetti"],
+    "instructions": "Heat olive oil in a large skillet over medium heat.\nAdd garlic and onion; sauté until translucent.\nAdd ground beef and cook until browned.\nStir in red wine, bouillon cubes, crushed tomatoes, tomato paste, Worcestershire sauce, and sugar.\nSimmer for 20-30 minutes, stirring occasionally.\nSeason with salt and pepper.\nCook spaghetti according to package instructions; drain.\nServe Bolognese sauce over spaghetti.",
+    "dietaryTags": ["Standard", "Dinner", "Comfort Food"],
+    "allergens": ["Gluten", "Fish", "Soy"],
+    "benefitDescription": "Provides sustained energy from carbohydrates and protein for satiety. Tomatoes are a good source of lycopene, an antioxidant."
+  },
+  {
+    "name": "Oatmeal with Berries",
+    "nutrition": {"calories": 350, "protein": 10, "carbs": 60, "fat": 8},
+    "ingredientNames": ["Old-Fashioned Oats", "Whole Milk", "Frozen Berries", "Cinnamon", "Vanilla Extract", "Maple Syrup", "Salt"],
+    "instructions": "In a saucepan, combine oats, milk, cinnamon, vanilla extract, maple syrup, and salt.\nBring to a boil over medium heat, then reduce to a simmer.\nCook for 5-7 minutes, stirring occasionally, until oats are tender.\nStir in frozen berries and cook for an additional 2 minutes.\nServe hot with desired toppings like yogurt or sliced banana.",
+    "dietaryTags": ["Standard", "Vegetarian", "Vegan Option", "Breakfast", "Healthy"],
+    "allergens": ["Dairy"],
+    "benefitDescription": "Rich in soluble fiber, aiding digestion and heart health. Berries provide antioxidants and vitamins."
+  },
+  {
+    "name": "Turkey & Avocado Wrap",
+    "nutrition": {"calories": 450, "protein": 30, "carbs": 30, "fat": 22},
+    "ingredientNames": ["Avocado", "Mayonnaise", "Fresh Lime Juice", "Salt", "Black Pepper", "Tortillas or Wraps (10-12 inches)", "Shaved Deli Turkey", "Fresh Spinach", "Shredded Carrots or Broccoli Slaw", "English Cucumber", "Cherry Tomatoes", "Bell Peppers"],
+    "instructions": "In a bowl, mash the avocado with mayonnaise (or sour cream), lime juice, salt, and pepper.\nSpread the avocado mixture evenly over each tortilla.\nLayer with turkey, spinach, carrots, cucumber, tomatoes, and bell peppers.\nRoll up each tortilla tightly to form a wrap.\nSlice in half and serve.",
+    "dietaryTags": ["Standard", "Lunch", "Quick Meal"],
+    "allergens": ["Egg", "Gluten", "Soy"],
+    "benefitDescription": "Good source of lean protein and healthy fats from avocado. Vegetables contribute fiber and vitamins."
+  },
+  {
+    "name": "Baked Salmon with Vegetables",
+    "nutrition": {"calories": 480, "protein": 40, "carbs": 20, "fat": 25},
+    "ingredientNames": ["Salmon Fillets", "Bell Peppers", "Red Onion", "Broccoli Florets", "Carrot", "Olive Oil", "Minced Garlic", "Lemon Juice", "Salt", "Black Pepper", "Lemon Wedges"],
+    "instructions": "Preheat oven to 400°F (200°C).\nPlace salmon fillets and vegetables on a baking sheet lined with parchment paper.\nIn a small bowl, mix olive oil, garlic, salt, and pepper.\nDrizzle the mixture over the salmon and vegetables.\nBake for 20-25 minutes until salmon is cooked through and vegetables are tender.\nServe with lemon wedges (squeezed over).",
+    "dietaryTags": ["Standard", "Healthy", "Dinner", "Paleo", "Keto Option"],
+    "allergens": ["Fish"],
+    "benefitDescription": "Excellent source of omega-3 fatty acids from salmon and various vitamins and minerals from the roasted vegetables."
+  },
+  {
+    "name": "Greek Yogurt with Granola",
+    "nutrition": {"calories": 320, "protein": 20, "carbs": 40, "fat": 10},
+    "ingredientNames": ["Plain Greek Yogurt", "Banana", "Granola", "Cinnamon", "Honey"],
+    "instructions": "Spoon Greek yogurt into a bowl.\nTop with sliced banana and granola.\nSprinkle with cinnamon and drizzle with honey.\nServe immediately.",
+    "dietaryTags": ["Standard", "Vegetarian", "Breakfast", "Snack", "Healthy"],
+    "allergens": ["Dairy", "Nuts", "Gluten"],
+    "benefitDescription": "High in protein from Greek yogurt for satiety, with fiber and energy from granola and fruit."
+  },
+  {
+    "name": "Tuna Sandwich",
+    "nutrition": {"calories": 380, "protein": 25, "carbs": 30, "fat": 15},
+    "ingredientNames": ["Canned Tuna in Oil", "Mayonnaise", "Finely Diced Celery", "Finely Chopped Dill Pickle", "Pickle Juice", "Dijon Mustard", "Finely Chopped Dill or Parsley", "Finely Sliced Green Onion", "Black Pepper", "Bread Slices"],
+    "instructions": "In a bowl, combine tuna, mayonnaise, celery, dill pickle, pickle juice, Dijon mustard, dill, green onion, and black pepper.\nMix until well combined.\nSpread the tuna mixture onto bread slices to make sandwiches.",
+    "dietaryTags": ["Standard", "Lunch"],
+    "allergens": ["Fish", "Egg", "Gluten", "Soy", "Mustard"],
+    "benefitDescription": "Good source of protein from tuna. Celery adds a bit of fiber and crunch."
+  },
+  {
+    "name": "Beef Stir Fry",
+    "nutrition": {"calories": 520, "protein": 30, "carbs": 45, "fat": 25},
+    "ingredientNames": ["Vegetable Oil", "Steak (Sirloin)", "Broccoli Florets", "Bell Pepper (red)", "Carrot", "Green Onion", "Minced Garlic", "Soy Sauce", "Toasted Sesame Seeds"],
+    "instructions": "Heat vegetable oil in a large skillet over medium-high heat.\nAdd beef strips and cook until browned; remove and set aside.\nIn the same skillet, add broccoli, bell pepper, carrots, green onion, and garlic; sauté until vegetables are tender-crisp.\nReturn beef to the skillet, add soy sauce, and stir to combine.\nSprinkle with toasted sesame seeds before serving.",
+    "dietaryTags": ["Standard", "Dinner", "Asian Inspired"],
+    "allergens": ["Soy", "Gluten", "Sesame"],
+    "benefitDescription": "A balanced meal with protein from beef and a variety of vitamins and fiber from colorful vegetables."
+  },
+  {
+    "name": "Breakfast Burrito",
+    "nutrition": {"calories": 480, "protein": 22, "carbs": 40, "fat": 25},
+    "ingredientNames": ["Large Eggs", "Smoked Paprika", "Salt", "Spicy Sausage", "Shredded Monterey Jack Cheese", "Flour Tortillas", "Vegetable Oil"],
+    "instructions": "In a bowl, whisk eggs with smoked paprika and salt.\nIn a skillet, cook sausage over medium heat until browned; remove and set aside.\nIn the same skillet, scramble the eggs until just set.\nWarm tortillas in a separate pan or microwave.\nAssemble burritos by placing sausage, scrambled eggs, and cheese onto each tortilla.\nRoll up the tortillas, folding in the sides to enclose the filling.\nOptional: Lightly toast the burritos in a skillet until golden brown.",
+    "dietaryTags": ["Standard", "Breakfast", "Hearty"],
+    "allergens": ["Eggs", "Dairy", "Gluten"],
+    "benefitDescription": "A hearty and protein-rich breakfast to keep you full and energized."
+  },
+  {
+    "name": "Pasta Salad",
+    "nutrition": {"calories": 420, "protein": 12, "carbs": 55, "fat": 18},
+    "ingredientNames": ["Cooked Pasta (like rotini or penne)", "Cherry Tomatoes", "Cucumber", "Black Olives, Sliced", "Red Onion", "Feta Cheese, Crumbled", "Italian Dressing", "Salt", "Black Pepper"],
+    "instructions": "In a large bowl, combine cooked pasta, cherry tomatoes, cucumber, black olives, red onion, and feta cheese.\nPour in the Italian dressing and toss everything together until well coated.\nSeason with salt and pepper, then chill for 15–30 minutes before serving.",
+    "dietaryTags": ["Standard", "Vegetarian", "Lunch", "Side Dish", "Potluck"],
+    "allergens": ["Gluten", "Dairy"],
+    "benefitDescription": "A refreshing salad providing carbohydrates for energy, with vitamins and minerals from fresh vegetables."
+  },
+  {
+    "name": "Roast Chicken with Potatoes",
+    "nutrition": {"calories": 550, "protein": 45, "carbs": 35, "fat": 25},
+    "ingredientNames": ["Bone-in Chicken Thighs or Drumsticks", "Potatoes", "Olive Oil", "Garlic Powder", "Rosemary or Thyme", "Salt", "Black Pepper"],
+    "instructions": "Preheat oven to 400°F (200°C).\nToss potatoes with 1 tablespoon olive oil, garlic powder, herbs, salt, and pepper.\nPlace the seasoned potatoes in a baking dish and add the chicken pieces on top.\nDrizzle remaining oil over chicken and season with salt and pepper.\nRoast for 40–45 minutes or until chicken is golden and cooked through.",
+    "dietaryTags": ["Standard", "Dinner", "Comfort Food"],
+    "allergens": [],
+    "benefitDescription": "A classic comfort meal, high in protein from chicken and providing energy from potatoes."
+  },
+  {
+    "name": "Avocado Toast with Eggs",
+    "nutrition": {"calories": 390, "protein": 18, "carbs": 30, "fat": 22},
+    "ingredientNames": ["Whole Grain Bread", "Ripe Avocado", "Egg", "Salt", "Black Pepper", "Red Pepper Flakes", "Olive Oil"],
+    "instructions": "Toast the bread slices.\nIn a pan, cook eggs as desired (fried, poached, or scrambled) using olive oil or butter.\nMash avocado with a fork and spread onto toast.\nTop each slice with an egg and sprinkle with salt, pepper, and red pepper flakes if desired.",
+    "dietaryTags": ["Standard", "Vegetarian", "Breakfast", "Lunch", "Healthy"],
+    "allergens": ["Gluten", "Eggs"],
+    "benefitDescription": "Rich in healthy fats from avocado, protein from eggs, and fiber from whole grain bread."
+  },
+  {
+    "name": "Avocado & Eggs",
+    "nutrition": {"calories": 400, "protein": 20, "carbs": 5, "fat": 35},
+    "ingredientNames": ["Ripe Avocado", "Large Eggs", "Salt", "Black Pepper", "Olive Oil"],
+    "instructions": "Cut the avocado in half, remove the pit, and scoop onto a plate.\nCook eggs to your preference (boiled, scrambled, fried) using cooking oil or butter.\nPlace eggs beside or on top of avocado.\nSeason with salt and pepper. Serve as-is or with toast.",
+    "dietaryTags": ["Standard", "Vegetarian", "Breakfast", "Healthy", "Keto Option", "Paleo"],
+    "allergens": ["Eggs"],
+    "benefitDescription": "A simple meal packed with healthy fats from avocado and high-quality protein from eggs."
+  },
+  {
+    "name": "Quinoa Bowl",
+    "nutrition": {"calories": 450, "protein": 15, "carbs": 60, "fat": 18},
+    "ingredientNames": ["Cooked Quinoa", "Roasted Sweet Potatoes", "Black Beans", "Avocado", "Cherry Tomatoes", "Olive Oil", "Lemon Juice", "Salt", "Black Pepper"],
+    "instructions": "In a bowl, layer quinoa, sweet potatoes, black beans, avocado, and cherry tomatoes.\nDrizzle with olive oil and lemon juice.\nSeason with salt and pepper. Mix gently and serve warm or cold.",
+    "dietaryTags": ["Standard", "Vegetarian", "Vegan Option", "Healthy", "Lunch", "Dinner", "Gluten-Free"],
+    "allergens": [],
+    "benefitDescription": "A nutrient-dense bowl providing complete protein from quinoa, fiber from beans and vegetables, and healthy fats."
+  },
+  {
+    "name": "Homemade Pizza",
+    "nutrition": {"calories": 650, "protein": 25, "carbs": 70, "fat": 30},
+    "ingredientNames": ["Pre-made Pizza Crust or Dough", "Pizza Sauce", "Shredded Mozzarella Cheese", "Pepperoni or Cooked Sausage", "Chopped Bell Peppers or Mushrooms"],
+    "instructions": "Preheat oven according to crust package instructions.\nSpread pizza sauce over the crust.\nAdd cheese and toppings.\nBake for 10–15 minutes or until cheese is bubbly and crust is golden.",
+    "dietaryTags": ["Standard", "Dinner", "Comfort Food", "Fun to make"],
+    "allergens": ["Gluten", "Dairy"],
+    "benefitDescription": "A customizable and satisfying meal. Can be made healthier with whole wheat crust and plenty of vegetables."
+  },
+  {
+    "name": "Pancakes with Maple Syrup",
+    "nutrition": {"calories": 500, "protein": 8, "carbs": 90, "fat": 12},
+    "ingredientNames": ["Flour", "Sugar", "Baking Powder", "Baking Soda", "Salt", "Milk (2%)", "Egg", "Melted Butter", "Maple Syrup"],
+    "instructions": "Mix dry ingredients in a bowl. In a separate bowl, whisk milk, egg, and melted butter.\nCombine wet and dry ingredients just until blended.\nHeat a non-stick skillet and pour 1/4 cup batter per pancake.\nFlip when bubbles form and cook until golden.\nServe with maple syrup.",
+    "dietaryTags": ["Standard", "Vegetarian", "Breakfast", "Comfort Food"],
+    "allergens": ["Gluten", "Dairy", "Egg"],
+    "benefitDescription": "A classic breakfast treat providing quick energy from carbohydrates."
+  },
+  {
+    "name": "Grilled Cheese & Soup",
+    "nutrition": {"calories": 580, "protein": 18, "carbs": 60, "fat": 30},
+    "ingredientNames": ["Bread Slices", "Butter", "Slices of Cheese (Cheddar or American)", "Tomato Soup"],
+    "instructions": "Butter one side of each bread slice.\nPlace cheese between unbuttered sides and cook in a skillet until golden on both sides.\nHeat soup in a saucepan.\nServe grilled cheese with soup on the side.",
+    "dietaryTags": ["Standard", "Lunch", "Comfort Food"],
+    "allergens": ["Gluten", "Dairy"],
+    "benefitDescription": "A comforting and satisfying meal, especially on a cold day. Tomato soup can provide some vitamins."
+  },
+  {
+    "name": "Steak with Mashed Potatoes",
+    "nutrition": {"calories": 620, "protein": 40, "carbs": 40, "fat": 30},
+    "ingredientNames": ["Steaks (Ribeye or Sirloin)", "Salt", "Black Pepper", "Olive Oil", "Potatoes", "Milk (2%)", "Butter"],
+    "instructions": "Boil potatoes until tender; mash with milk, butter, salt, and pepper.\nSeason steak with salt and pepper.\nSear steak in a hot skillet with olive oil, 3–4 minutes per side for medium.\nLet steak rest before serving with mashed potatoes.",
+    "dietaryTags": ["Standard", "Dinner", "Comfort Food", "Hearty"],
+    "allergens": ["Dairy"],
+    "benefitDescription": "High in protein for muscle support and iron from steak. Potatoes offer energy and potassium."
+  },
+  {
+    "name": "Eggs Benedict",
+    "nutrition": {"calories": 550, "protein": 25, "carbs": 25, "fat": 40},
+    "ingredientNames": ["English Muffin", "Canadian Bacon", "Egg", "Hollandaise Sauce"],
+    "instructions": "Brown the bacon in a skillet.\nPoach eggs in simmering water.\nSplit and toast English muffins.\nPlace bacon on muffin halves, top with poached egg.\nSpoon hollandaise sauce over the top and serve.",
+    "dietaryTags": ["Standard", "Breakfast", "Brunch", "Classic"],
+    "allergens": ["Gluten", "Egg", "Dairy"],
+    "benefitDescription": "A classic brunch dish offering protein and a rich, satisfying flavor."
+  },
+  {
+    "name": "Caesar Salad",
+    "nutrition": {"calories": 300, "protein": 8, "carbs": 10, "fat": 25},
+    "ingredientNames": ["Romaine Lettuce", "Caesar Dressing", "Parmesan Cheese (grated)", "Croutons"],
+    "instructions": "Toss lettuce with Caesar dressing.\nSprinkle with Parmesan and croutons.\nServe immediately.",
+    "dietaryTags": ["Standard", "Vegetarian Option", "Lunch", "Side Dish"],
+    "allergens": ["Dairy", "Gluten", "Fish"],
+    "benefitDescription": "A light and refreshing salad. Romaine lettuce is a source of vitamins A and K."
+  },
+  {
+    "name": "Lasagna",
+    "nutrition": {"calories": 620, "protein": 30, "carbs": 65, "fat": 28},
+    "ingredientNames": ["Lasagna Noodles", "Ground Beef", "Marinara Sauce", "Ricotta Cheese", "Mozzarella Cheese (shredded)", "Parmesan Cheese (grated)"],
+    "instructions": "Preheat oven to 375°F (190°C).\nBrown ground beef, then stir in marinara sauce.\nIn a baking dish, layer cooked noodles, meat sauce, ricotta, and mozzarella. Repeat layers.\nTop with Parmesan and cover with foil.\nBake for 25 minutes, then uncover and bake 10 minutes more.",
+    "dietaryTags": ["Standard", "Dinner", "Comfort Food", "Italian"],
+    "allergens": ["Gluten", "Dairy"],
+    "benefitDescription": "A hearty and flavorful Italian classic, providing protein, carbohydrates, and calcium."
+  },
+  {
+    "name": "Fruit Smoothie Bowl",
+    "nutrition": {"calories": 250, "protein": 7, "carbs": 37, "fat": 4},
+    "ingredientNames": ["Frozen Berries", "Banana", "Almond Milk (unsweetened)", "Chia Seeds", "Granola"],
+    "instructions": "Blend frozen berries, banana, almond milk, and chia seeds until smooth.\nPour into a bowl.\nTop with granola and additional fruit if desired.",
+    "dietaryTags": ["Vegetarian", "Vegan", "Breakfast", "Snack", "Healthy"],
+    "allergens": ["Nuts", "Gluten"],
+    "benefitDescription": "Packed with antioxidants from berries, fiber from chia and granola, and vitamins from fruit."
+  },
+  {
+    "name": "Caprese Sandwich",
+    "nutrition": {"calories": 450, "protein": 20, "carbs": 40, "fat": 22},
+    "ingredientNames": ["Whole Wheat Bread Slice", "Fresh Mozzarella Cheese", "Tomato (medium)", "Fresh Basil", "Balsamic Glaze", "Olive Oil"],
+    "instructions": "Layer mozzarella, tomato slices, and basil leaves on one slice of bread.\nDrizzle with balsamic glaze and olive oil.\nTop with the other slice of bread.",
+    "dietaryTags": ["Vegetarian", "Lunch", "Italian Inspired"],
+    "allergens": ["Gluten", "Dairy"],
+    "benefitDescription": "A refreshing sandwich featuring fresh ingredients, providing calcium and antioxidants."
+  },
+  {
+    "name": "Vegetable Stir Fry",
+    "nutrition": {"calories": 300, "protein": 10, "carbs": 35, "fat": 15},
+    "ingredientNames": ["Vegetable Oil", "Broccoli Florets", "Bell Pepper (red)", "Carrot", "Green Onion", "Minced Garlic", "Tofu (firm)", "Soy Sauce", "Toasted Sesame Seeds"],
+    "instructions": "Heat vegetable oil in a large skillet or wok.\nAdd cubed tofu and stir-fry until golden; remove and set aside.\nAdd broccoli, bell pepper, carrots, green onion, and garlic; stir-fry until tender-crisp.\nReturn tofu to the skillet, add soy sauce, and stir to combine.\nSprinkle with toasted sesame seeds before serving.",
+    "dietaryTags": ["Vegetarian", "Vegan", "Dinner", "Asian Inspired"],
+    "allergens": ["Soy", "Gluten", "Sesame"],
+    "benefitDescription": "A colorful and quick meal loaded with fiber, vitamins, and plant-based protein from tofu."
+  },
+  {
+    "name": "Greek Salad",
+    "nutrition": {"calories": 275, "protein": 20, "carbs": 17, "fat": 12},
+    "ingredientNames": ["Romaine Lettuce", "Cucumber", "Tomato (medium)", "Red Onion", "Kalamata Olives", "Feta Cheese", "Olive Oil", "Lemon Juice", "Oregano (dried)"],
+    "instructions": "Chop lettuce, cucumber, tomato, and red onion.\nCombine vegetables in a bowl with olives and feta cheese.\nWhisk together olive oil, lemon juice, and oregano for the dressing.\nPour dressing over salad and toss gently.",
+    "dietaryTags": ["Vegetarian", "Lunch", "Dinner", "Side Dish", "Healthy", "Gluten-Free"],
+    "allergens": ["Dairy"],
+    "benefitDescription": "Rich in healthy fats from olive oil and feta, with plenty of vitamins and minerals from fresh vegetables."
+  },
+  {
+    "name": "Mushroom Risotto",
+    "nutrition": {"calories": 500, "protein": 15, "carbs": 70, "fat": 15},
+    "ingredientNames": ["Olive Oil", "Onion", "Arborio Rice", "Mushroom (sliced)", "Dry White Wine", "Vegetable Broth", "Parmesan Cheese (grated)", "Butter", "Salt", "Black Pepper"],
+    "instructions": "Heat olive oil in a large saucepan. Sauté chopped onion until soft.\nAdd Arborio rice and toast for 1-2 minutes, stirring constantly.\nAdd sliced mushrooms and cook until softened.\nPour in white wine and stir until absorbed.\nBegin adding warm vegetable broth, one ladleful at a time, stirring frequently and waiting until mostly absorbed before adding the next.\nContinue until rice is creamy and cooked al dente (about 20-25 minutes).\nStir in Parmesan cheese and butter. Season with salt and pepper.\nServe immediately.",
+    "dietaryTags": ["Vegetarian", "Dinner", "Italian", "Comfort Food"],
+    "allergens": ["Dairy", "Sulphites"],
+    "benefitDescription": "A creamy and comforting dish. Mushrooms provide B vitamins and minerals."
+  },
+  {
+    "name": "Yogurt Parfait",
+    "nutrition": {"calories": 300, "protein": 15, "carbs": 35, "fat": 10},
+    "ingredientNames": ["Plain Greek Yogurt", "Granola", "Mixed Berries (frozen)", "Honey"],
+    "instructions": "In a glass or bowl, layer Greek yogurt, granola, and berries.\nRepeat the layers until the glass is full.\nDrizzle with honey if desired.\nServe immediately.",
+    "dietaryTags": ["Vegetarian", "Breakfast", "Snack", "Healthy"],
+    "allergens": ["Dairy", "Nuts", "Gluten"],
+    "benefitDescription": "A quick and easy option, high in protein and calcium from yogurt, with fiber from granola and antioxidants from berries."
+  },
+  {
+    "name": "Hummus Wrap",
+    "nutrition": {"calories": 450, "protein": 15, "carbs": 50, "fat": 20},
+    "ingredientNames": ["Whole Wheat Tortilla", "Hummus", "Fresh Spinach", "Cucumber", "Bell Pepper (red)", "Carrot", "Feta Cheese"],
+    "instructions": "Spread a generous layer of hummus over the tortilla.\nLayer spinach, sliced cucumber, sliced bell pepper, shredded carrot, and crumbled feta cheese over the hummus.\nRoll up the tortilla tightly.\nSlice in half or eat whole.",
+    "dietaryTags": ["Vegetarian", "Lunch", "Quick Meal"],
+    "allergens": ["Gluten", "Dairy", "Sesame"],
+    "benefitDescription": "Provides plant-based protein and fiber from hummus and vegetables. A convenient and customizable meal."
+  },
+  {
+    "name": "Eggplant Parmesan",
+    "nutrition": {"calories": 500, "protein": 20, "carbs": 40, "fat": 25},
+    "ingredientNames": ["Eggplant", "Egg", "Breadcrumbs (plain)", "Olive Oil", "Marinara Sauce", "Mozzarella Cheese (shredded)", "Parmesan Cheese (grated)", "Salt", "Black Pepper"],
+    "instructions": "Preheat oven to 375°F (190°C).\nSlice eggplant into 1/4-inch rounds. Lightly salt and let sit to draw out moisture, then pat dry.\nBeat egg in one shallow dish. Place breadcrumbs in another.\nDip eggplant slices in egg, then coat with breadcrumbs.\nHeat olive oil in a large skillet. Fry eggplant slices until golden brown on both sides. Drain on paper towels.\nSpread a thin layer of marinara sauce in a baking dish. Layer fried eggplant, marinara sauce, mozzarella, and Parmesan. Repeat layers.\nBake for 20-25 minutes, until bubbly and cheese is melted.",
+    "dietaryTags": ["Vegetarian", "Dinner", "Italian", "Comfort Food"],
+    "allergens": ["Egg", "Gluten", "Dairy"],
+    "benefitDescription": "A classic Italian comfort food. Eggplant is a source of fiber and antioxidants."
+  },
+  {
+    "name": "Veggie Breakfast Burrito",
+    "nutrition": {"calories": 400, "protein": 15, "carbs": 40, "fat": 20},
+    "ingredientNames": ["Large Eggs", "Milk (2%)", "Olive Oil", "Onion", "Bell Peppers", "Black Beans (canned)", "Corn (canned)", "Cheddar Cheese", "Salsa", "Flour Tortillas"],
+    "instructions": "Whisk eggs and milk together. Season with salt and pepper.\nHeat olive oil in a skillet. Sauté chopped onion and bell peppers until softened.\nAdd black beans and corn, heat through.\nPush veggies to one side, pour eggs into the other side and scramble.\nWarm tortillas. Fill with veggie/bean mixture, scrambled eggs, and shredded cheddar cheese.\nRoll up tightly. Serve with salsa.",
+    "dietaryTags": ["Vegetarian", "Breakfast", "Hearty"],
+    "allergens": ["Egg", "Dairy", "Gluten"],
+    "benefitDescription": "A filling and flavorful breakfast option, providing protein, fiber, and various vitamins."
+  },
+  {
+    "name": "Quinoa Salad",
+    "nutrition": {"calories": 350, "protein": 15, "carbs": 40, "fat": 15},
+    "ingredientNames": ["Cooked Quinoa", "Cucumber", "Cherry Tomatoes", "Red Onion", "Bell Pepper (yellow)", "Chickpeas (canned)", "Feta Cheese", "Fresh Parsley", "Olive Oil", "Lemon Juice", "Salt", "Black Pepper"],
+    "instructions": "In a large bowl, combine cooked quinoa, diced cucumber, halved cherry tomatoes, finely chopped red onion, diced bell pepper, rinsed chickpeas, crumbled feta, and chopped parsley.\nIn a small bowl, whisk together olive oil, lemon juice, salt, and pepper for the dressing.\nPour dressing over the salad and toss gently to combine.\nChill for at least 15 minutes before serving.",
+    "dietaryTags": ["Vegetarian", "Healthy", "Lunch", "Dinner", "Salad", "Gluten-Free"],
+    "allergens": ["Dairy"],
+    "benefitDescription": "A complete protein source from quinoa, combined with fiber-rich vegetables and healthy fats."
+  },
+  {
+    "name": "Vegetable Curry",
+    "nutrition": {"calories": 450, "protein": 10, "carbs": 60, "fat": 20},
+    "ingredientNames": ["Coconut Oil", "Onion", "Garlic Cloves", "Ginger (fresh, grated)", "Curry Powder", "Mixed Vegetables (frozen)", "Chickpeas (canned)", "Diced Tomatoes (canned)", "Coconut Milk (full-fat)", "Salt", "Basmati Rice (cooked)"],
+    "instructions": "Heat coconut oil in a large pot or Dutch oven. Sauté chopped onion until softened.\nAdd minced garlic and grated ginger, cook until fragrant.\nStir in curry powder and cook for 1 minute.\nAdd mixed vegetables, rinsed chickpeas, diced tomatoes (with juice), and coconut milk. Stir well.\nBring to a simmer, then reduce heat, cover, and cook for 15-20 minutes, or until vegetables are tender.\nSeason with salt to taste.\nServe hot over cooked basmati rice.",
+    "dietaryTags": ["Vegetarian", "Vegan", "Dinner", "Indian Inspired", "Gluten-Free"],
+    "allergens": [],
+    "benefitDescription": "A flavorful and aromatic dish packed with vegetables, providing fiber, vitamins, and plant-based protein."
+  },
+  {
+    "name": "Oatmeal with Fruit",
+    "nutrition": {"calories": 350, "protein": 10, "carbs": 60, "fat": 7},
+    "ingredientNames": ["Old-Fashioned Oats", "Water", "Banana", "Walnuts", "Cinnamon", "Salt"],
+    "instructions": "Combine oats, water, and a pinch of salt in a saucepan.\nBring to a boil, then reduce heat and simmer for 5-7 minutes, stirring occasionally.\nStir in sliced banana and chopped walnuts during the last minute of cooking.\nSprinkle with cinnamon before serving.",
+    "dietaryTags": ["Vegetarian", "Vegan", "Breakfast", "Healthy"],
+    "allergens": ["Nuts"],
+    "benefitDescription": "A warm and comforting breakfast high in soluble fiber, which is good for heart health and digestion."
+  },
+  {
+    "name": "Tomato Soup & Grilled Cheese",
+    "nutrition": {"calories": 550, "protein": 20, "carbs": 50, "fat": 30},
+    "ingredientNames": ["Bread Slices", "Butter", "Slices of Cheese (Cheddar or American)", "Tomato Soup"],
+    "instructions": "Butter one side of each bread slice.\nPlace cheese between unbuttered sides and cook in a skillet until golden on both sides.\nHeat soup in a saucepan.\nServe grilled cheese with soup on the side.",
+    "dietaryTags": ["Vegetarian", "Lunch", "Comfort Food"],
+    "allergens": ["Gluten", "Dairy"],
+    "benefitDescription": "Classic comfort food. Tomato soup provides lycopene, while cheese offers calcium."
+  },
+  {
+    "name": "Veggie Burgers",
+    "nutrition": {"calories": 500, "protein": 15, "carbs": 60, "fat": 20},
+    "ingredientNames": ["Veggie Burger Patty", "Burger Buns", "Olive Oil", "Lettuce (iceberg)", "Tomato (medium)", "Onion", "Pickles", "Cheddar Cheese Slice"],
+    "instructions": "Heat olive oil in a skillet or preheat grill.\nCook veggie burger patties according to package directions until heated through and slightly browned.\nIf desired, toast burger buns lightly.\nAssemble burgers: place cooked patty on bottom bun, top with cheese (optional, melt briefly if desired), lettuce, tomato, onion, and pickles. Add top bun.\nServe immediately.",
+    "dietaryTags": ["Vegetarian", "Lunch", "Dinner"],
+    "allergens": ["Gluten", "Dairy", "Soy"],
+    "benefitDescription": "A satisfying plant-based alternative to traditional burgers, often a good source of fiber and protein."
+  },
+  {
+    "name": "Banana Pancakes",
+    "nutrition": {"calories": 450, "protein": 10, "carbs": 70, "fat": 15},
+    "ingredientNames": ["Banana", "Large Eggs", "Baking Powder", "Cinnamon", "Vanilla Extract", "Coconut Oil"],
+    "instructions": "Mash ripe banana well in a bowl.\nWhisk in eggs, baking powder, cinnamon, and vanilla extract until combined.\nHeat coconut oil in a non-stick skillet over medium-low heat.\nPour small amounts of batter (about 2-3 tablespoons) per pancake.\nCook for 2-3 minutes per side, until golden brown and cooked through. Flip carefully.\nServe warm with desired toppings (maple syrup, fruit, yogurt).",
+    "dietaryTags": ["Vegetarian", "Breakfast", "Healthy", "Gluten-Free Option"],
+    "allergens": ["Egg"],
+    "benefitDescription": "Naturally sweetened with banana, these pancakes offer potassium and can be a healthier breakfast option."
+  },
+  {
+    "name": "Mediterranean Platter",
+    "nutrition": {"calories": 600, "protein": 15, "carbs": 50, "fat": 35},
+    "ingredientNames": ["Hummus", "Pita Bread", "Falafel Balls (cooked)", "Cucumber", "Cherry Tomatoes", "Kalamata Olives", "Feta Cheese", "Olive Oil"],
+    "instructions": "Arrange hummus, warm pita bread (cut into wedges), and cooked falafel balls on a large platter.\nAdd sliced cucumber, halved cherry tomatoes, Kalamata olives, and cubed or crumbled feta cheese.\nDrizzle olive oil over the hummus and feta if desired.\nServe as a shared appetizer or light meal.",
+    "dietaryTags": ["Vegetarian", "Lunch", "Appetizer", "Mediterranean"],
+    "allergens": ["Gluten", "Dairy", "Sesame"],
+    "benefitDescription": "A flavorful platter rich in healthy fats, fiber, and various micronutrients from diverse ingredients."
+  },
+  {
+    "name": "Stuffed Bell Peppers",
+    "nutrition": {"calories": 350, "protein": 10, "carbs": 45, "fat": 15},
+    "ingredientNames": ["Bell Peppers", "Olive Oil", "Onion", "Garlic Cloves", "Cooked Quinoa", "Black Beans (canned)", "Corn (canned)", "Diced Tomatoes (canned)", "Chili Powder", "Cumin (ground)", "Cheddar Cheese", "Salt", "Black Pepper"],
+    "instructions": "Preheat oven to 375°F (190°C). Cut bell peppers in half lengthwise, remove seeds.\nHeat olive oil in a skillet. Sauté chopped onion until soft. Add minced garlic, cook until fragrant.\nStir in cooked quinoa, rinsed black beans, corn, diced tomatoes (drained), chili powder, and cumin. Season with salt and pepper. Heat through.\nStuff the bell pepper halves with the quinoa mixture.\nPlace stuffed peppers in a baking dish. Add a little water to the bottom of the dish.\nCover with foil and bake for 30 minutes.\nUncover, top with shredded cheddar cheese, and bake for another 10-15 minutes, until peppers are tender and cheese is melted.",
+    "dietaryTags": ["Vegetarian", "Dinner", "Healthy", "Gluten-Free Option"],
+    "allergens": ["Dairy"],
+    "benefitDescription": "Bell peppers are rich in Vitamin C. The filling provides protein from quinoa and beans, and fiber."
+  },
+  {
+    "name": "Veggie Omelette",
+    "nutrition": {"calories": 375, "protein": 20, "carbs": 15, "fat": 20},
+    "ingredientNames": ["Large Eggs", "Milk (2%)", "Butter", "Onion", "Bell Peppers", "Mushroom (sliced)", "Fresh Spinach", "Cheddar Cheese", "Salt", "Black Pepper"],
+    "instructions": "Whisk eggs and milk together. Season with salt and pepper.\nHeat butter in a non-stick skillet over medium heat. Sauté chopped onion, bell peppers, and mushrooms until softened.\nAdd spinach and cook until wilted.\nPour egg mixture over the vegetables in the skillet.\nAs eggs set, gently lift edges and tilt pan to allow uncooked egg to flow underneath.\nWhen eggs are nearly set, sprinkle cheese over one half.\nFold the omelette in half and slide onto a plate. Serve immediately.",
+    "dietaryTags": ["Vegetarian", "Breakfast", "Brunch", "Low-Carb Option", "Gluten-Free"],
+    "allergens": ["Egg", "Dairy"],
+    "benefitDescription": "High in protein from eggs and cheese, with added vitamins and minerals from various vegetables."
+  },
+  {
+    "name": "Falafel Wrap",
+    "nutrition": {"calories": 500, "protein": 15, "carbs": 65, "fat": 20},
+    "ingredientNames": ["Whole Wheat Pita", "Falafel Balls (cooked)", "Hummus", "Romaine Lettuce", "Tomato (medium)", "Cucumber", "Red Onion", "Tahini"],
+    "instructions": "Warm pita bread slightly.\nSpread hummus inside the pita or over one side if using flatbread.\nLayer lettuce, sliced tomato, sliced cucumber, and thinly sliced red onion.\nAdd cooked falafel balls (usually 3-4 per wrap).\nDrizzle with tahini sauce (thin with water/lemon juice if needed).\nFold or roll the wrap.",
+    "dietaryTags": ["Vegetarian", "Vegan Option", "Lunch", "Dinner", "Mediterranean"],
+    "allergens": ["Gluten", "Sesame"],
+    "benefitDescription": "A satisfying wrap with plant-based protein from falafel and hummus, along with fresh vegetables."
+  },
+  {
+    "name": "Spinach Lasagna",
+    "nutrition": {"calories": 550, "protein": 25, "carbs": 60, "fat": 20},
+    "ingredientNames": ["Lasagna Noodles", "Olive Oil", "Onion", "Garlic Cloves", "Fresh Spinach", "Ricotta Cheese", "Egg", "Parmesan Cheese (grated)", "Nutmeg", "Marinara Sauce", "Mozzarella Cheese (shredded)", "Salt", "Black Pepper"],
+    "instructions": "Preheat oven to 375°F (190°C). Cook lasagna noodles according to package directions.\nHeat olive oil, sauté onion and garlic. Add spinach and cook until wilted. Squeeze out excess moisture.\nIn a bowl, mix ricotta, beaten egg, half the Parmesan, wilted spinach, a pinch of nutmeg, salt, and pepper.\nSpread a layer of marinara sauce in a baking dish. Layer noodles, ricotta mixture, marinara sauce, and mozzarella. Repeat layers.\nTop with remaining mozzarella and Parmesan.\nBake for 30-40 minutes, until bubbly and golden. Let rest before serving.",
+    "dietaryTags": ["Vegetarian", "Dinner", "Italian", "Comfort Food"],
+    "allergens": ["Gluten", "Dairy", "Egg"],
+    "benefitDescription": "A vegetarian twist on a classic, rich in calcium from cheese and iron from spinach."
+  },
+  {
+    "name": "Chia Seed Pudding",
+    "nutrition": {"calories": 300, "protein": 10, "carbs": 35, "fat": 15},
+    "ingredientNames": ["Chia Seeds", "Almond Milk (unsweetened)", "Maple Syrup", "Vanilla Extract", "Berries (fresh)"],
+    "instructions": "In a jar or bowl, combine chia seeds, almond milk, maple syrup, and vanilla extract.\nWhisk or stir very well to combine and break up clumps.\nLet sit for 5 minutes, then stir again vigorously.\nCover and refrigerate for at least 2-3 hours, or preferably overnight, until thick and pudding-like.\nStir before serving. Top with fresh berries.",
+    "dietaryTags": ["Vegan", "Vegetarian", "Breakfast", "Snack", "Dessert", "Healthy", "Gluten-Free"],
+    "allergens": ["Nuts"],
+    "benefitDescription": "High in fiber, omega-3 fatty acids, and antioxidants. A healthy and versatile pudding."
+  },
+  {
+    "name": "Chickpea Salad",
+    "nutrition": {"calories": 350, "protein": 15, "carbs": 45, "fat": 10},
+    "ingredientNames": ["Chickpeas (canned)", "Celery Stalk", "Red Onion", "Vegan Mayonnaise", "Dijon Mustard", "Salt", "Black Pepper"],
+    "instructions": "Rinse and drain chickpeas. In a medium bowl, mash chickpeas with a fork or potato masher until mostly broken down but still some texture remains.\nFinely chop celery and red onion. Add to the mashed chickpeas.\nAdd vegan mayonnaise and Dijon mustard. Season with salt and pepper.\nMix well until everything is combined.\nServe as a sandwich on bread, in lettuce wraps, or with crackers.",
+    "dietaryTags": ["Vegan", "Vegetarian", "Lunch", "Sandwich Filling", "Gluten-Free Option"],
+    "allergens": ["Soy", "Mustard"],
+    "benefitDescription": "A plant-based protein and fiber powerhouse, great for a quick and satisfying meal."
+  },
+  {
+    "name": "Lentil Curry",
+    "nutrition": {"calories": 450, "protein": 20, "carbs": 60, "fat": 10},
+    "ingredientNames": ["Olive Oil", "Onion", "Garlic Cloves", "Ginger (fresh, grated)", "Curry Powder", "Turmeric", "Cumin (ground)", "Red Lentils (dry)", "Vegetable Broth", "Diced Tomatoes (canned)", "Coconut Cream", "Fresh Spinach", "Salt", "Basmati Rice (cooked)"],
+    "instructions": "Heat olive oil in a pot. Sauté chopped onion until soft. Add minced garlic and grated ginger, cook until fragrant.\nStir in curry powder, turmeric, and cumin. Cook for 1 minute.\nAdd rinsed red lentils, vegetable broth, and diced tomatoes. Bring to a boil.\nReduce heat, cover, and simmer for 20-25 minutes, or until lentils are tender, stirring occasionally.\nStir in coconut cream and fresh spinach. Cook until spinach wilts.\nSeason with salt to taste.\nServe hot over cooked basmati rice.",
+    "dietaryTags": ["Vegan", "Vegetarian", "Dinner", "Indian Inspired", "Healthy", "Gluten-Free"],
+    "allergens": [],
+    "benefitDescription": "Excellent source of plant-based protein and fiber. Lentils are also rich in iron and folate."
+  },
+  {
+    "name": "Smoothie Bowl",
+    "nutrition": {"calories": 250, "protein": 7, "carbs": 37, "fat": 4},
+    "ingredientNames": ["Frozen Berries", "Banana", "Almond Milk (unsweetened)", "Fresh Spinach", "Chia Seeds", "Granola", "Shredded Coconut (Unsweetened)"],
+    "instructions": "Blend frozen berries, banana, almond milk, and spinach until very smooth and thick.\nPour into a bowl.\nTop decoratively with chia seeds, granola, shredded coconut, and extra berries or sliced banana.",
+    "dietaryTags": ["Vegan", "Vegetarian", "Breakfast", "Snack", "Healthy"],
+    "allergens": ["Nuts", "Gluten"],
+    "benefitDescription": "A customizable and refreshing bowl packed with vitamins, minerals, fiber, and antioxidants."
+  },
+  {
+    "name": "Vegan Chili",
+    "nutrition": {"calories": 400, "protein": 15, "carbs": 60, "fat": 10},
+    "ingredientNames": ["Olive Oil", "Onion", "Bell Peppers", "Garlic Cloves", "Chili Powder", "Cumin (ground)", "Smoked Paprika", "Kidney Beans (canned)", "Black Beans (canned)", "Diced Tomatoes (canned)", "Vegetable Broth", "Corn (canned)", "Salt", "Black Pepper"],
+    "instructions": "Heat olive oil in a large pot. Sauté chopped onion and bell peppers until softened.\nAdd minced garlic, chili powder, cumin, and smoked paprika. Cook for 1 minute until fragrant.\nStir in rinsed kidney beans, rinsed black beans, diced tomatoes (with juice), and vegetable broth.\nBring to a boil, then reduce heat, cover, and simmer for at least 30 minutes, stirring occasionally.\nStir in corn during the last 10 minutes.\nSeason with salt and pepper to taste. Serve hot with desired toppings (avocado, vegan sour cream, cilantro).",
+    "dietaryTags": ["Vegan", "Vegetarian", "Dinner", "Comfort Food", "Healthy", "Gluten-Free"],
+    "allergens": [],
+    "benefitDescription": "A hearty and flavorful chili, rich in plant-based protein, fiber, and various vitamins."
+  },
+  {
+    "name": "Overnight Oats",
+    "nutrition": {"calories": 350, "protein": 10, "carbs": 60, "fat": 7},
+    "ingredientNames": ["Old-Fashioned Oats", "Almond Milk (unsweetened)", "Chia Seeds", "Maple Syrup", "Vanilla Extract", "Cinnamon"],
+    "instructions": "Combine oats, almond milk, chia seeds, maple syrup, vanilla, and cinnamon in a jar or container.\nStir very well to combine.\nCover and refrigerate overnight (or at least 4 hours).\nStir again before serving. Add toppings like fruit, nuts, or seeds if desired.",
+    "dietaryTags": ["Vegan", "Vegetarian", "Breakfast", "Meal Prep", "Healthy"],
+    "allergens": ["Nuts"],
+    "benefitDescription": "A convenient and nutritious breakfast option, high in fiber and can be customized with various toppings."
+  },
+  {
+    "name": "Vegan Buddha Bowl",
+    "nutrition": {"calories": 500, "protein": 15, "carbs": 70, "fat": 20},
+    "ingredientNames": ["Cooked Quinoa", "Roasted Sweet Potatoes", "Chickpeas (canned)", "Avocado", "Shredded Carrots or Broccoli Slaw", "Edamame (shelled)", "Fresh Spinach", "Tahini", "Lemon Juice", "Water", "Salt"],
+    "instructions": "Arrange a base of fresh spinach and cooked quinoa in a bowl.\nTop with sections of roasted sweet potatoes, rinsed chickpeas, sliced avocado, shredded carrots/slaw, and cooked edamame.\nPrepare dressing: Whisk tahini, lemon juice, a splash of water (to thin), and a pinch of salt until smooth.\nDrizzle dressing over the bowl.\nServe immediately.",
+    "dietaryTags": ["Vegan", "Vegetarian", "Healthy", "Lunch", "Dinner", "Gluten-Free"],
+    "allergens": ["Soy", "Sesame"],
+    "benefitDescription": "A balanced and colorful bowl offering a wide range of nutrients, including plant-based protein, fiber, and healthy fats."
+  },
+  {
+    "name": "Mushroom Pasta",
+    "nutrition": {"calories": 550, "protein": 15, "carbs": 80, "fat": 15},
+    "ingredientNames": ["Spaghetti", "Olive Oil", "Garlic Cloves", "Mushroom (sliced)", "Dry White Wine", "Vegetable Broth", "Nutritional Yeast", "Fresh Parsley", "Salt", "Black Pepper"],
+    "instructions": "Cook spaghetti according to package directions. Reserve some pasta water.\nHeat olive oil in a large skillet. Sauté minced garlic until fragrant.\nAdd sliced mushrooms and cook until browned and softened.\nPour in white wine and cook until mostly evaporated.\nAdd a splash of vegetable broth and simmer for a few minutes.\nDrain pasta and add it to the skillet with the mushrooms.\nStir in nutritional yeast and chopped fresh parsley. Add a little reserved pasta water if needed to create a light sauce.\nSeason with salt and pepper. Toss well and serve.",
+    "dietaryTags": ["Vegan", "Vegetarian", "Dinner", "Italian Inspired"],
+    "allergens": ["Gluten", "Sulphites"],
+    "benefitDescription": "A savory pasta dish. Mushrooms are a good source of B vitamins, and nutritional yeast adds a cheesy flavor plus B12."
+  },
+  {
+    "name": "Tofu Scramble",
+    "nutrition": {"calories": 300, "protein": 20, "carbs": 15, "fat": 15},
+    "ingredientNames": ["Tofu (firm)", "Olive Oil", "Onion", "Bell Peppers", "Nutritional Yeast", "Turmeric", "Garlic Powder", "Black Salt (Kala Namak)", "Fresh Spinach", "Salt", "Black Pepper"],
+    "instructions": "Press tofu to remove excess water, then crumble into a bowl.\nHeat olive oil in a skillet. Sauté chopped onion and bell peppers until softened.\nAdd crumbled tofu to the skillet. Cook for 5-7 minutes, breaking it up further.\nStir in nutritional yeast, turmeric, garlic powder, and black salt (optional, for eggy flavor). Cook for 2 minutes.\nAdd fresh spinach and cook until wilted.\nSeason with regular salt and black pepper to taste. Serve hot.",
+    "dietaryTags": ["Vegan", "Vegetarian", "Breakfast", "Brunch", "High-Protein", "Gluten-Free"],
+    "allergens": ["Soy"],
+    "benefitDescription": "A high-protein, plant-based alternative to scrambled eggs. Turmeric provides anti-inflammatory benefits."
+  },
+  {
+    "name": "Lentil Soup",
+    "nutrition": {"calories": 300, "protein": 15, "carbs": 45, "fat": 5},
+    "ingredientNames": ["Olive Oil", "Onion", "Carrot", "Celery Stalk", "Garlic Cloves", "Lentils (brown, cooked)", "Vegetable Broth", "Diced Tomatoes (canned)", "Bay Leaf", "Thyme (fresh)", "Salt", "Black Pepper"],
+    "instructions": "Heat olive oil in a large pot. Sauté chopped onion, carrot, and celery until softened (about 5-7 minutes).\nAdd minced garlic and cook until fragrant (1 minute).\nStir in cooked lentils, vegetable broth, diced tomatoes, bay leaf, and thyme sprig.\nBring to a simmer, then reduce heat, cover partially, and cook for 20-30 minutes to allow flavors to meld.\nRemove bay leaf and thyme sprig.\nSeason generously with salt and pepper. Serve hot.",
+    "dietaryTags": ["Vegan", "Vegetarian", "Lunch", "Dinner", "Healthy", "Soup", "Gluten-Free"],
+    "allergens": ["Celery"],
+    "benefitDescription": "A hearty and nutritious soup, excellent source of fiber, plant-based protein, iron, and folate."
+  },
+  {
+    "name": "Vegan Pizza",
+    "nutrition": {"calories": 650, "protein": 15, "carbs": 100, "fat": 20},
+    "ingredientNames": ["Pre-made Pizza Crust or Dough", "Pizza Sauce", "Vegan Cheese (shredded)", "Mushroom (sliced)", "Bell Peppers", "Onion", "Kalamata Olives", "Oregano (dried)"],
+    "instructions": "Preheat oven according to pizza crust directions.\nSpread pizza sauce evenly over the crust.\nSprinkle with vegan shredded cheese.\nTop with sliced mushrooms, bell peppers, onion, and olives.\nSprinkle with dried oregano.\nBake for 10-15 minutes (or per crust instructions) until crust is golden and cheese is melted and bubbly.",
+    "dietaryTags": ["Vegan", "Vegetarian", "Dinner", "Comfort Food"],
+    "allergens": ["Gluten", "Soy", "Nuts"],
+    "benefitDescription": "A plant-based version of a classic favorite. Load up on vegetables for added nutrients."
+  },
+  {
+    "name": "Vegan Pancakes",
+    "nutrition": {"calories": 450, "protein": 8, "carbs": 75, "fat": 12},
+    "ingredientNames": ["Flour", "Baking Powder", "Salt", "Almond Milk (unsweetened)", "Maple Syrup", "Vanilla Extract", "Coconut Oil"],
+    "instructions": "In a large bowl, whisk together flour, baking powder, and salt.\nIn a separate small bowl, whisk together almond milk, maple syrup, and vanilla extract.\nPour the wet ingredients into the dry ingredients and whisk until just combined (do not overmix).\nHeat coconut oil in a non-stick skillet over medium heat.\nPour about 1/4 cup of batter per pancake onto the skillet.\nCook for 2-3 minutes per side, until golden brown and cooked through. Flip when bubbles appear on the surface.\nServe warm with maple syrup and fruit.",
+    "dietaryTags": ["Vegan", "Vegetarian", "Breakfast", "Comfort Food"],
+    "allergens": ["Gluten", "Nuts"],
+    "benefitDescription": "A delightful plant-based breakfast treat, perfect with fresh fruit and maple syrup."
+  },
+  {
+    "name": "Vegan Sushi",
+    "nutrition": {"calories": 400, "protein": 10, "carbs": 70, "fat": 5},
+    "ingredientNames": ["Nori Sheet", "Sushi Rice (cooked)", "Avocado", "Cucumber", "Carrot", "Bell Pepper (red)", "Rice Vinegar", "Sugar", "Salt", "Soy Sauce"],
+    "instructions": "Prepare sushi rice: Cook rice according to package directions. While warm, gently fold in a mixture of rice vinegar, sugar, and salt (dissolved together).\nLet rice cool slightly.\nPlace a nori sheet shiny-side down on a bamboo rolling mat (or plastic wrap).\nWet your hands slightly and spread a thin, even layer of sushi rice over the nori, leaving a small border at the top edge.\nArrange thin strips of avocado, cucumber, carrot, and bell pepper horizontally across the rice near the bottom edge.\nCarefully lift the edge of the mat and roll the nori tightly over the filling. Continue rolling, pressing gently, until you reach the top border. Wet the border slightly with water to seal.\nSlice the roll into 6-8 pieces using a sharp, wet knife.\nServe with soy sauce, pickled ginger, and wasabi if desired.",
+    "dietaryTags": ["Vegan", "Vegetarian", "Lunch", "Dinner", "Japanese Inspired", "Healthy"],
+    "allergens": ["Soy", "Gluten"],
+    "benefitDescription": "A light and refreshing meal, customizable with various vegetables. Seaweed is a good source of iodine."
+  },
+  {
+    "name": "Fruit & Granola",
+    "nutrition": {"calories": 350, "protein": 8, "carbs": 60, "fat": 10},
+    "ingredientNames": ["Mixed Berries (frozen)", "Banana", "Granola", "Almond Milk (unsweetened)", "Chia Seeds"],
+    "instructions": "Combine fresh or frozen berries and sliced banana in a bowl.\nTop with a generous amount of granola.\nPour a splash of almond milk over the top.\nSprinkle with chia seeds if desired.\nServe immediately.",
+    "dietaryTags": ["Vegan", "Vegetarian", "Breakfast", "Snack", "Healthy"],
+    "allergens": ["Nuts", "Gluten"],
+    "benefitDescription": "A quick and easy option for breakfast or a snack, providing fiber, vitamins, and energy."
+  },
+  {
+    "name": "Bacon & Eggs",
+    "nutrition": {"calories": 450, "protein": 30, "carbs": 5, "fat": 35},
+    "ingredientNames": ["Bacon", "Large Eggs", "Salt", "Black Pepper"],
+    "instructions": "Cook bacon strips in a skillet over medium heat until desired crispness. Remove bacon and drain on paper towels, leaving some bacon fat in the pan.\nCrack eggs into the skillet with the bacon fat. Cook to desired doneness (fried, scrambled).\nSeason eggs with salt and pepper.\nServe eggs with bacon strips.",
+    "dietaryTags": ["Paleo", "Keto", "Low-Carb", "Breakfast", "High-Protein"],
+    "allergens": ["Egg"],
+    "benefitDescription": "A classic high-protein breakfast, suitable for low-carb and ketogenic diets."
+  },
+  {
+    "name": "Chicken Salad",
+    "nutrition": {"calories": 400, "protein": 35, "carbs": 5, "fat": 25},
+    "ingredientNames": ["Cooked Chicken Breast", "Avocado", "Celery Stalk", "Red Onion", "Lime Juice", "Salt", "Black Pepper", "Lettuce Leaf (for wraps)"],
+    "instructions": "Chop cooked chicken breast into small pieces.\nMash avocado in a bowl. Add chopped celery, finely chopped red onion, lime juice, salt, and pepper. Mix well.\nStir in the chopped chicken.\nServe the chicken salad in lettuce cups or on its own.",
+    "dietaryTags": ["Paleo", "Healthy", "Lunch", "High-Protein", "Low-Carb", "Gluten-Free"],
+    "allergens": ["Celery"],
+    "benefitDescription": "A light and refreshing salad high in protein and healthy fats from avocado."
+  },
+  {
+    "name": "Steak with Roasted Vegetables",
+    "nutrition": {"calories": 500, "protein": 37, "carbs": 10, "fat": 27},
+    "ingredientNames": ["Steaks (Ribeye or Sirloin)", "Broccoli Florets", "Bell Peppers", "Onion", "Olive Oil", "Salt", "Black Pepper", "Garlic Powder"],
+    "instructions": "Preheat oven to 400°F (200°C).\nToss broccoli, chopped bell peppers, and onion wedges with olive oil, salt, pepper, and garlic powder on a baking sheet.\nRoast vegetables for 15-20 minutes, until tender-crisp.\nWhile vegetables roast, season steaks with salt and pepper.\nGrill or pan-sear steaks to desired doneness (e.g., 3-5 minutes per side for medium-rare).\nLet steaks rest for 5 minutes.\nServe sliced steak alongside the roasted vegetables.",
+    "dietaryTags": ["Paleo", "Keto Option", "Dinner", "High-Protein", "Low-Carb", "Gluten-Free"],
+    "allergens": [],
+    "benefitDescription": "A protein-packed meal with iron from steak and fiber and vitamins from roasted vegetables."
+  },
+  {
+    "name": "Sweet Potato Hash",
+    "nutrition": {"calories": 450, "protein": 15, "carbs": 45, "fat": 25},
+    "ingredientNames": ["Sweet Potato", "Olive Oil", "Onion", "Bell Peppers", "Cooked Sausage", "Large Eggs", "Salt", "Black Pepper", "Paprika"],
+    "instructions": "Peel and dice sweet potato into small cubes.\nHeat olive oil in a large skillet. Add sweet potato cubes and cook until tender and slightly browned (about 10-15 minutes).\nAdd chopped onion and bell peppers, cook until softened.\nStir in crumbled cooked sausage (ensure paleo-compliant) and heat through.\nCreate wells in the hash mixture. Crack an egg into each well.\nCover the skillet and cook until egg whites are set but yolks are runny (or cook longer if preferred).\nSeason everything with salt, pepper, and paprika. Serve hot.",
+    "dietaryTags": ["Paleo", "Breakfast", "Brunch", "Hearty", "Gluten-Free"],
+    "allergens": ["Egg"],
+    "benefitDescription": "A flavorful and filling hash. Sweet potatoes are a good source of Vitamin A and fiber."
+  },
+  {
+    "name": "Tuna Salad",
+    "nutrition": {"calories": 350, "protein": 30, "carbs": 10, "fat": 20},
+    "ingredientNames": ["Tuna (canned in water, drained)", "Avocado", "Red Onion", "Celery Stalk", "Lime Juice", "Salt", "Black Pepper", "Cucumber"],
+    "instructions": "Drain tuna well.\nMash avocado in a bowl. Stir in finely chopped red onion, finely diced celery, lime juice, salt, and pepper.\nGently fold in the drained tuna.\nServe on cucumber slices, in lettuce cups, or alongside other vegetables.",
+    "dietaryTags": ["Paleo", "Healthy", "Lunch", "High-Protein", "Low-Carb", "Gluten-Free"],
+    "allergens": ["Fish", "Celery"],
+    "benefitDescription": "A quick and easy protein-rich salad, with healthy fats from avocado."
+  },
+  {
+    "name": "Baked Salmon",
+    "nutrition": {"calories": 375, "protein": 30, "carbs": 10, "fat": 20},
+    "ingredientNames": ["Salmon Fillets", "Olive Oil", "Lemon", "Salt", "Black Pepper", "Fresh Parsley"],
+    "instructions": "Preheat oven to 400°F (200°C).\nPlace salmon fillets on a baking sheet (skin-on or off).\nDrizzle with olive oil and squeeze fresh lemon juice over the top.\nSeason generously with salt and pepper.\nBake for 12-15 minutes, or until salmon is cooked through and flakes easily.\nGarnish with chopped fresh parsley before serving.",
+    "dietaryTags": ["Paleo", "Keto", "Healthy", "Dinner", "High-Protein", "Low-Carb", "Gluten-Free"],
+    "allergens": ["Fish"],
+    "benefitDescription": "Rich in omega-3 fatty acids and high-quality protein. Simple and healthy."
+  },
+  {
+    "name": "Fruit & Nut Bowl",
+    "nutrition": {"calories": 400, "protein": 10, "carbs": 40, "fat": 25},
+    "ingredientNames": ["Mixed Berries (frozen)", "Banana", "Almonds", "Walnuts", "Pecans", "Shredded Coconut (Unsweetened)"],
+    "instructions": "Combine a mix of fresh or frozen berries and sliced banana in a bowl.\nTop with a handful of almonds, walnuts, and pecans.\nSprinkle with unsweetened shredded coconut.\nServe as a quick breakfast or snack.",
+    "dietaryTags": ["Paleo", "Vegetarian", "Vegan", "Breakfast", "Snack", "Healthy", "Gluten-Free"],
+    "allergens": ["Nuts"],
+    "benefitDescription": "Provides natural sugars for energy, healthy fats from nuts, and antioxidants from berries."
+  },
+  {
+    "name": "Turkey Lettuce Wraps",
+    "nutrition": {"calories": 350, "protein": 30, "carbs": 10, "fat": 20},
+    "ingredientNames": ["Olive Oil", "Ground Turkey", "Onion", "Garlic Cloves", "Ginger (fresh, grated)", "Carrot", "Water Chestnuts", "Coconut Aminos", "Sesame Oil", "Lettuce Leaf (for wraps)", "Green Onion"],
+    "instructions": "Heat olive oil in a skillet. Add ground turkey and cook until browned, breaking it up.\nAdd chopped onion, minced garlic, and grated ginger. Cook until softened.\nStir in finely diced carrot and chopped water chestnuts (if using). Cook for a few minutes.\nIn a small bowl, whisk together coconut aminos and sesame oil. Pour over the turkey mixture.\nCook until sauce thickens slightly.\nSpoon the turkey mixture into large lettuce leaves (like butter or iceberg).\nGarnish with sliced green onions.",
+    "dietaryTags": ["Paleo", "Healthy", "Lunch", "Dinner", "Asian Inspired", "Low-Carb", "Gluten-Free"],
+    "allergens": ["Sesame"],
+    "benefitDescription": "A light yet satisfying meal, high in protein and low in carbs. Vegetables add crunch and nutrients."
+  },
+  {
+    "name": "Beef Stew",
+    "nutrition": {"calories": 500, "protein": 35, "carbs": 20, "fat": 25},
+    "ingredientNames": ["Beef Tallow or Lard", "Stew Meat (Beef Chuck)", "Onion", "Carrot", "Celery Stalk", "Garlic Cloves", "Beef Broth", "Tomato Paste", "Bay Leaf", "Thyme (fresh)", "Salt", "Black Pepper"],
+    "instructions": "Heat tallow/lard in a large pot or Dutch oven over medium-high heat. Brown stew meat in batches; remove and set aside.\nAdd chopped onion, carrots, and celery to the pot. Cook until softened (about 5-7 minutes).\nAdd minced garlic and cook for 1 minute.\nStir in tomato paste and cook for 1 minute.\nReturn beef to the pot. Add beef broth, bay leaf, and thyme. Bring to a simmer.\nReduce heat to low, cover, and simmer gently for 1.5 - 2 hours, or until beef is very tender.\nRemove bay leaf and thyme sprig. Season generously with salt and pepper.\nServe hot.",
+    "dietaryTags": ["Paleo", "Dinner", "Comfort Food", "Hearty", "Gluten-Free", "Low-Carb"],
+    "allergens": ["Celery"],
+    "benefitDescription": "A warming and hearty stew, rich in protein and collagen from slowly cooked beef."
+  },
+  {
+    "name": "Paleo Smoothie",
+    "nutrition": {"calories": 250, "protein": 7, "carbs": 20, "fat": 15},
+    "ingredientNames": ["Almond Milk (unsweetened)", "Fresh Spinach", "Banana", "Almond Butter", "Chia Seeds"],
+    "instructions": "Combine almond milk, spinach, banana (use half for lower carb), almond butter, and chia seeds in a blender.\nBlend until smooth and creamy.\nAdd ice cubes if desired for a colder, thicker smoothie.\nPour into a glass and enjoy.",
+    "dietaryTags": ["Paleo", "Vegan", "Vegetarian", "Breakfast", "Snack", "Healthy", "Smoothie", "Gluten-Free"],
+    "allergens": ["Nuts"],
+    "benefitDescription": "A quick and easy way to get in greens, healthy fats, and fiber."
+  },
+  {
+    "name": "Chicken & Avocado Salad",
+    "nutrition": {"calories": 400, "protein": 35, "carbs": 10, "fat": 25},
+    "ingredientNames": ["Chicken Breast (boneless, skinless)", "Avocado", "Mixed Greens", "Cucumber", "Red Onion", "Olive Oil", "Salt", "Black Pepper", "Lemon Juice"],
+    "instructions": "Grill or pan-fry the chicken breasts until cooked through, about 7-8 minutes per side.\nSlice the chicken and set aside.\nIn a large bowl, combine mixed greens, sliced cucumber, thinly sliced red onion, and sliced avocado.\nAdd the sliced chicken on top.\nDrizzle with olive oil, lemon juice, and season with salt and pepper.\nToss gently and serve.",
+    "dietaryTags": ["Paleo", "Healthy", "Lunch", "Dinner", "High-Protein", "Gluten-Free"],
+    "allergens": [],
+    "benefitDescription": "A lean protein and healthy fat combination that's both satisfying and nutritious."
+  },
+  {
+    "name": "Pork Chops with Applesauce",
+    "nutrition": {"calories": 500, "protein": 35, "carbs": 20, "fat": 25},
+    "ingredientNames": ["Pork Chop (boneless)", "Salt", "Black Pepper", "Olive Oil", "Applesauce (unsweetened)", "Cinnamon", "Honey"],
+    "instructions": "Season the pork chops with salt and pepper.\nHeat olive oil in a skillet over medium heat.\nCook the pork chops for 4-5 minutes per side until browned and cooked through.\nIn a separate small pan, gently warm the applesauce, cinnamon, and honey (if using) over low heat.\nServe the pork chops with a spoonful of warm applesauce on top.",
+    "dietaryTags": ["Paleo", "Dinner", "Gluten-Free"],
+    "allergens": [],
+    "benefitDescription": "A flavorful way to enjoy pork, with natural sweetness from applesauce."
+  },
+  {
+    "name": "Almond Flour Pancakes",
+    "nutrition": {"calories": 450, "protein": 15, "carbs": 25, "fat": 30},
+    "ingredientNames": ["Almond Flour", "Large Eggs", "Almond Milk (unsweetened)", "Baking Powder", "Vanilla Extract", "Salt", "Coconut Oil"],
+    "instructions": "In a bowl, whisk together the almond flour, eggs, almond milk, baking powder, vanilla extract, and a pinch of salt until smooth.\nHeat a non-stick pan or griddle over medium heat and add a little coconut oil to coat.\nPour about 1/4 cup of batter onto the pan for each pancake.\nCook for 2-3 minutes per side, until golden brown and cooked through.\nServe immediately. (Optional: top with fresh berries or a drizzle of maple syrup if not strictly paleo).",
+    "dietaryTags": ["Paleo", "Vegetarian", "Breakfast", "Gluten-Free", "Low-Carb Option"],
+    "allergens": ["Nuts", "Egg"],
+    "benefitDescription": "A gluten-free and lower-carb pancake option, providing healthy fats from almond flour."
+  },
+  {
+    "name": "Shrimp & Vegetable Skewers",
+    "nutrition": {"calories": 300, "protein": 30, "carbs": 10, "fat": 15},
+    "ingredientNames": ["Shrimp (raw, peeled, deveined)", "Bell Peppers", "Zucchini", "Red Onion", "Olive Oil", "Salt", "Black Pepper", "Lemon Wedges"],
+    "instructions": "Preheat the grill or oven broiler to medium-high heat.\nThread shrimp and chunks of bell pepper, zucchini rounds, and red onion chunks onto skewers, alternating ingredients.\nPlace skewers on a baking sheet or tray.\nDrizzle generously with olive oil and season well with salt and pepper.\nGrill or broil for 3-4 minutes per side, until shrimp is pink and cooked through, and vegetables are tender-crisp with slight charring.\nServe immediately with lemon wedges for squeezing over.",
+    "dietaryTags": ["Paleo", "Healthy", "Dinner", "Lunch", "Grilling", "Gluten-Free", "Low-Carb"],
+    "allergens": ["Shellfish"],
+    "benefitDescription": "A light and flavorful meal, high in protein and packed with colorful, vitamin-rich vegetables."
+  },
+  {
+    "name": "Bison Burgers",
+    "nutrition": {"calories": 550, "protein": 40, "carbs": 15, "fat": 35},
+    "ingredientNames": ["Ground Bison", "Salt", "Black Pepper", "Garlic Powder", "Olive Oil", "Lettuce Leaf (for wraps)", "Tomato (medium)", "Onion"],
+    "instructions": "Gently form the ground bison into burger patties (e.g., 2-4 patties from 1 lb). Avoid overworking the meat.\nSeason both sides of the patties generously with salt, pepper, and garlic powder.\nHeat olive oil in a skillet or grill pan over medium-high heat.\nCook the patties for about 4-5 minutes per side for medium-rare, or longer depending on desired doneness.\nServe wrapped in large lettuce leaves with slices of tomato and onion.",
+    "dietaryTags": ["Paleo", "Dinner", "Lunch", "High-Protein", "Gluten-Free", "Low-Carb"],
+    "allergens": [],
+    "benefitDescription": "Bison is a leaner red meat option, high in protein, iron, and B vitamins."
+  },
+  {
+    "name": "Egg Muffins",
+    "nutrition": {"calories": 350, "protein": 25, "carbs": 5, "fat": 25},
+    "ingredientNames": ["Large Eggs", "Almond Milk (unsweetened)", "Fresh Spinach", "Cooked Sausage", "Salt", "Black Pepper"],
+    "instructions": "Preheat oven to 350°F (175°C). Grease a standard 6 or 12-cup muffin tin.\nIn a bowl, whisk together the eggs, almond milk, salt, and pepper.\nStir in chopped spinach and crumbled cooked sausage (ensure paleo-compliant).\nPour the egg mixture evenly into the prepared muffin cups, filling each about 3/4 full.\nBake for 15-20 minutes, or until the muffins are set.\nLet cool slightly in the tin before removing and serving.",
+    "dietaryTags": ["Paleo", "Breakfast", "Snack", "Meal Prep", "Low-Carb", "Gluten-Free", "High-Protein"],
+    "allergens": ["Egg", "Nuts"],
+    "benefitDescription": "A convenient and portable high-protein breakfast or snack, easy to customize with various fillings."
+  },
+  {
+    "name": "Grilled Chicken",
+    "nutrition": {"calories": 400, "protein": 40, "carbs": 5, "fat": 20},
+    "ingredientNames": ["Chicken Breast (boneless, skinless)", "Olive Oil", "Salt", "Black Pepper", "Paprika"],
+    "instructions": "Preheat your grill to medium heat.\nBrush the chicken breasts on both sides with olive oil.\nSeason generously with salt, pepper, and paprika (if using).\nPlace the chicken on the preheated grill.\nGrill for 6-7 minutes per side, or until the internal temperature reaches 165°F (74°C) and juices run clear.\nRemove from grill and let the chicken rest for a few minutes before slicing or serving whole.",
+    "dietaryTags": ["Paleo", "Healthy", "Dinner", "Lunch", "High-Protein", "Grilling", "Gluten-Free", "Low-Carb"],
+    "allergens": [],
+    "benefitDescription": "A lean source of high-quality protein, versatile for various meals and salads."
+  },
+  {
+    "name": "Lamb Chops",
+    "nutrition": {"calories": 500, "protein": 35, "carbs": 5, "fat": 35},
+    "ingredientNames": ["Lamb Chop", "Salt", "Black Pepper", "Olive Oil", "Garlic Cloves", "Rosemary"],
+    "instructions": "Pat the lamb chops dry and season generously with salt and pepper.\nHeat olive oil in a heavy-bottomed skillet over medium-high heat until shimmering.\nCarefully place the lamb chops in the hot pan. Cook for 3-4 minutes per side for medium-rare, adjusting time for desired doneness.\nIn the last minute of cooking, add minced garlic cloves and chopped fresh rosemary to the pan with the chops, spooning some of the hot oil over them.\nRemove chops from the pan and let them rest for 5 minutes before serving. Spoon any pan juices over the chops.",
+    "dietaryTags": ["Paleo", "Dinner", "High-Protein", "Gluten-Free", "Low-Carb"],
+    "allergens": [],
+    "benefitDescription": "Lamb is a good source of protein, iron, zinc, and vitamin B12. Rosemary adds antioxidant benefits."
+  },
+  {
+    "name": "Breakfast Casserole",
+    "nutrition": {"calories": 450, "protein": 30, "carbs": 15, "fat": 30},
+    "ingredientNames": ["Large Eggs", "Fresh Spinach", "Cooked Sausage", "Bell Peppers", "Onion", "Salt", "Black Pepper", "Coconut Oil"],
+    "instructions": "Preheat the oven to 375°F (190°C). Grease a small baking dish (e.g., 8x8 inch) with coconut oil.\nSauté chopped bell peppers and onion in a little coconut oil until softened.\nIn a large bowl, whisk together the eggs, salt, and pepper.\nStir in chopped spinach, crumbled cooked sausage (ensure paleo-compliant), and the sautéed vegetables.\nPour the mixture into the prepared baking dish.\nBake for 20-25 minutes, or until the eggs are set in the center.\nLet cool for a few minutes before slicing and serving.",
+    "dietaryTags": ["Paleo", "Breakfast", "Meal Prep", "Low-Carb", "Gluten-Free", "High-Protein"],
+    "allergens": ["Egg"],
+    "benefitDescription": "A satisfying and protein-rich breakfast that can be prepared ahead of time."
+  },
+  {
+    "name": "Cobb Salad",
+    "nutrition": {"calories": 450, "protein": 30, "carbs": 10, "fat": 30},
+    "ingredientNames": ["Mixed Greens", "Cooked Chicken Breast", "Hard-boiled Egg", "Avocado", "Bacon", "Cherry Tomatoes", "Olive Oil", "Apple Cider Vinegar"],
+    "instructions": "Arrange the mixed greens on a large plate or in a shallow bowl.\nNeatly arrange the chopped cooked chicken, chopped hard-boiled eggs, sliced avocado, crumbled bacon, and halved cherry tomatoes in rows or sections over the greens.\nIn a small bowl, whisk together olive oil and apple cider vinegar to create a simple vinaigrette. Season with salt and pepper if desired.\nDrizzle the dressing over the salad just before serving.\nServe immediately.",
+    "dietaryTags": ["Paleo", "Healthy", "Lunch", "Dinner", "High-Protein", "Gluten-Free", "Low-Carb"],
+    "allergens": ["Egg"],
+    "benefitDescription": "A classic American salad loaded with various proteins, healthy fats, and fresh vegetables."
+  },
+  {
+    "name": "Roast Beef",
+    "nutrition": {"calories": 500, "protein": 40, "carbs": 5, "fat": 30},
+    "ingredientNames": ["Roast Beef", "Salt", "Black Pepper", "Olive Oil", "Garlic Clove", "Rosemary"],
+    "instructions": "Preheat the oven to 350°F (175°C).\nPat the roast beef dry. Rub it all over with olive oil, minced garlic, chopped fresh rosemary, salt, and pepper.\nPlace the seasoned roast in a roasting pan.\nRoast for approximately 1-1.5 hours for a 1 lb roast, or until a meat thermometer registers your desired internal temperature (e.g., 135°F for medium-rare, 145°F for medium).\nRemove the roast from the oven and let it rest, tented loosely with foil, for at least 10-15 minutes before slicing thinly against the grain and serving.",
+    "dietaryTags": ["Paleo", "Dinner", "High-Protein", "Gluten-Free", "Low-Carb"],
+    "allergens": [],
+    "benefitDescription": "An excellent source of protein, iron, and zinc. Perfect for a hearty meal."
+  },
+  {
+    "name": "Chicken Caesar Salad (No Croutons)",
+    "nutrition": {"calories": 350, "protein": 30, "carbs": 5, "fat": 25},
+    "ingredientNames": ["Chicken Breast (boneless, skinless)", "Romaine Lettuce", "Parmesan Cheese (grated)", "Caesar Dressing", "Salt", "Black Pepper"],
+    "instructions": "Grill or pan-fry the chicken breasts until fully cooked and slice them thinly.\nToss the chopped lettuce, parmesan, and Caesar dressing (use sugar-free if preferred) in a large bowl.\nAdd the sliced chicken on top.\nSeason with salt and pepper and serve.",
+    "dietaryTags": ["Keto", "Low-Carb", "High-Protein", "Lunch", "Dinner", "Salad", "Gluten-Free"],
+    "allergens": ["Dairy", "Fish"],
+    "benefitDescription": "A keto-friendly version of a classic salad, high in protein and fats, while low in carbs."
+  },
+  {
+    "name": "Steak with Buttered Vegetables",
+    "nutrition": {"calories": 550, "protein": 40, "carbs": 5, "fat": 40},
+    "ingredientNames": ["Steaks (Ribeye or Sirloin)", "Butter", "Mixed Vegetables (frozen)", "Salt", "Black Pepper"],
+    "instructions": "Season the steaks generously with salt and pepper.\nGrill or pan-fry the steaks to desired doneness (e.g., 4-5 minutes per side for medium).\nWhile the steaks are cooking, steam or sauté the mixed vegetables until tender-crisp.\nMelt butter in a pan (or the vegetable pan) and toss the cooked vegetables in the butter until coated.\nLet the steaks rest for a few minutes, then serve with the buttered vegetables on the side.",
+    "dietaryTags": ["Keto", "Low-Carb", "High-Protein", "Dinner", "Gluten-Free"],
+    "allergens": ["Dairy"],
+    "benefitDescription": "A rich and satisfying meal, high in protein and fats, perfect for a ketogenic diet."
+  },
+  {
+    "name": "Keto Smoothie",
+    "nutrition": {"calories": 300, "protein": 15, "carbs": 5, "fat": 25},
+    "ingredientNames": ["Almond Milk (unsweetened)", "Avocado", "Protein Powder (Vanilla, Low-Carb)", "Chia Seeds", "Fresh Spinach"],
+    "instructions": "Place all ingredients (almond milk, avocado, protein powder, chia seeds, spinach) in a blender.\nAdd ice cubes if desired for thickness and chill.\nBlend until smooth and creamy.\nPour into a glass and enjoy immediately.",
+    "dietaryTags": ["Keto", "Low-Carb", "High-Protein", "Breakfast", "Snack", "Smoothie", "Vegetarian"],
+    "allergens": ["Nuts", "Dairy"],
+    "benefitDescription": "A quick and easy low-carb smoothie, packed with healthy fats, protein, and fiber."
+  },
+  {
+    "name": "Tuna Salad Lettuce Wraps",
+    "nutrition": {"calories": 300, "protein": 30, "carbs": 5, "fat": 20},
+    "ingredientNames": ["Tuna (canned in water, drained)", "Mayonnaise", "Mustard", "Red Onion", "Dill Pickle Relish", "Romaine Lettuce", "Salt", "Black Pepper"],
+    "instructions": "In a bowl, mix the drained tuna, mayonnaise (use sugar-free if preferred), mustard, finely chopped red onion, dill pickle relish, salt, and pepper until well combined.\nSpoon the tuna mixture onto large, crisp romaine lettuce leaves.\nWrap the lettuce around the tuna mixture and serve.",
+    "dietaryTags": ["Keto", "Low-Carb", "High-Protein", "Lunch", "Snack", "Gluten-Free"],
+    "allergens": ["Fish", "Egg", "Soy", "Mustard"],
+    "benefitDescription": "A light, refreshing, and high-protein meal that's low in carbs and easy to prepare."
+  },
+  {
+    "name": "Salmon with Asparagus",
+    "nutrition": {"calories": 400, "protein": 35, "carbs": 5, "fat": 25},
+    "ingredientNames": ["Salmon Fillets", "Asparagus", "Olive Oil", "Salt", "Black Pepper", "Lemon"],
+    "instructions": "Preheat the oven to 375°F (190°C). Line a baking sheet with parchment paper.\nPlace the salmon fillets and trimmed asparagus spears on the baking sheet.\nDrizzle everything with olive oil.\nSeason generously with salt and pepper.\nSlice the lemon and place slices on top of the salmon fillets and around the asparagus.\nBake for 15-20 minutes, or until the salmon is cooked through and flakes easily with a fork, and the asparagus is tender-crisp.\nServe immediately.",
+    "dietaryTags": ["Keto", "Low-Carb", "High-Protein", "Paleo", "Healthy", "Dinner", "Gluten-Free"],
+    "allergens": ["Fish"],
+    "benefitDescription": "A nutrient-dense meal rich in omega-3 fatty acids, protein, and vitamins from asparagus."
+  },
+  {
+    "name": "Cheese Plate with Nuts",
+    "nutrition": {"calories": 500, "protein": 25, "carbs": 10, "fat": 40},
+    "ingredientNames": ["Assorted Cheeses", "Mixed Nuts", "Grapes", "Berries (fresh)", "Kalamata Olives"],
+    "instructions": "Arrange your selection of cheeses (e.g., cheddar, brie, goat cheese) and mixed nuts (e.g., almonds, walnuts, pecans) on a serving plate or board.\nAdd optional items like a small bunch of grapes, a handful of fresh berries, and some olives for variety in flavor and texture.\nServe as a light meal, appetizer, or snack.",
+    "dietaryTags": ["Keto", "Low-Carb", "Snack", "Appetizer", "Vegetarian", "Gluten-Free"],
+    "allergens": ["Dairy", "Tree Nuts"],
+    "benefitDescription": "A satisfying selection of healthy fats and protein, perfect for a low-carb snack or light meal."
+  },
+  {
+    "name": "Chicken Alfredo (No Pasta)",
+    "nutrition": {"calories": 450, "protein": 35, "carbs": 5, "fat": 35},
+    "ingredientNames": ["Cooked Chicken Breast", "Heavy Cream", "Parmesan Cheese (grated)", "Butter", "Garlic Cloves", "Zucchini Noodles", "Salt", "Black Pepper"],
+    "instructions": "In a large pan or skillet, melt butter over medium heat. Add minced garlic and sauté until fragrant (about 30-60 seconds).\nPour in the heavy cream and bring it to a gentle simmer. Cook for 2-3 minutes, stirring occasionally, until it slightly thickens.\nReduce heat to low and stir in the grated parmesan cheese until melted and the sauce is smooth. Season with salt and pepper to taste.\nAdd the cooked, sliced chicken breast and zucchini noodles (or other vegetable noodles) to the sauce.\nToss gently to coat everything in the sauce. Cook for another 2-3 minutes, until the chicken is heated through and the noodles are tender-crisp (don't overcook).\nServe immediately, garnished with extra parmesan or fresh parsley if desired.",
+    "dietaryTags": ["Keto", "Low-Carb", "High-Protein", "Dinner", "Gluten-Free"],
+    "allergens": ["Dairy"],
+    "benefitDescription": "A rich and creamy low-carb version of a classic, providing ample protein and fats."
+  },
+  {
+    "name": "Cream Cheese Pancakes",
+    "nutrition": {"calories": 400, "protein": 15, "carbs": 5, "fat": 35},
+    "ingredientNames": ["Cream Cheese", "Large Eggs", "Vanilla Extract", "Almond Flour", "Butter"],
+    "instructions": "Ensure cream cheese is softened. In a medium bowl, whisk together the softened cream cheese, eggs, and vanilla extract until mostly smooth (a few small lumps are okay).\nWhisk in the almond flour until just combined.\nHeat a non-stick skillet or griddle over medium-low heat and melt butter to coat the surface.\nPour small amounts of batter (about 2 tablespoons each) onto the hot skillet to form small pancakes.\nCook for 2-3 minutes on the first side, until edges look set and bubbles may form. Carefully flip and cook for another 1-2 minutes on the second side, until golden brown and cooked through.\nServe warm with sugar-free syrup, berries, or whipped cream.",
+    "dietaryTags": ["Keto", "Low-Carb", "Breakfast", "Vegetarian", "Gluten-Free"],
+    "allergens": ["Dairy", "Egg", "Nuts"],
+    "benefitDescription": "A delicious low-carb pancake alternative, providing healthy fats and protein."
+  },
+  {
+    "name": "Bunless Burger",
+    "nutrition": {"calories": 500, "protein": 35, "carbs": 5, "fat": 40},
+    "ingredientNames": ["Ground Beef", "Salt", "Black Pepper", "Olive Oil", "Lettuce (iceberg)", "Tomato (medium)", "Onion", "Pickles", "Cheddar Cheese"],
+    "instructions": "Form the ground beef (or turkey) into patties (don't overwork). Season both sides generously with salt and pepper.\nHeat olive oil in a skillet or grill pan over medium-high heat.\nCook the patties for 4-5 minutes per side for medium, or longer for desired doneness. If adding cheese, place a slice on top during the last minute of cooking and cover briefly to melt.\nServe the cooked patties without buns. Use large lettuce leaves (like iceberg or romaine) as wraps, or serve on a plate topped with sliced tomato, onion, pickles, and the melted cheese.",
+    "dietaryTags": ["Keto", "Low-Carb", "High-Protein", "Dinner", "Lunch", "Gluten-Free"],
+    "allergens": ["Dairy"],
+    "benefitDescription": "A satisfying high-protein, low-carb meal that skips the bun but not the flavor."
+  },
+  {
+    "name": "Keto Cereal",
+    "nutrition": {"calories": 350, "protein": 15, "carbs": 5, "fat": 30},
+    "ingredientNames": ["Almond Milk (unsweetened)", "Chia Seeds", "Shredded Coconut (Unsweetened)", "Flax Seeds", "Almond Butter"],
+    "instructions": "In a bowl, combine the almond milk, chia seeds, shredded coconut, and flax seeds.\nStir well to ensure the seeds are distributed.\nLet the mixture sit for at least 10-15 minutes at room temperature (or longer in the fridge) to allow the chia and flax seeds to absorb the liquid and thicken the mixture, creating a pudding-like consistency.\nStir in almond butter (optional) just before serving.\nServe cold.",
+    "dietaryTags": ["Keto", "Low-Carb", "Breakfast", "Snack", "Dessert", "Vegetarian", "Vegan Option", "Gluten-Free"],
+    "allergens": ["Tree Nuts"],
+    "benefitDescription": "A grain-free, low-carb cereal alternative packed with fiber and healthy fats."
+  },
+  {
+    "name": "Turkey & Cheese Roll-ups",
+    "nutrition": {"calories": 400, "protein": 35, "carbs": 5, "fat": 30},
+    "ingredientNames": ["Turkey Breast (sliced)", "Cheddar Cheese Slice", "Mustard", "Mayonnaise"],
+    "instructions": "Lay a slice of turkey breast flat on a cutting board or plate.\nSpread a thin layer of mustard or mayonnaise over the turkey, if desired.\nPlace a slice of cheese (e.g., cheddar, Swiss, provolone) on top of the turkey.\nRoll them up tightly together.\nRepeat with the remaining turkey and cheese slices.\nServe immediately as a snack or light lunch. Can be secured with toothpicks if needed.",
+    "dietaryTags": ["Keto", "Low-Carb", "High-Protein", "Snack", "Lunch", "Quick", "Gluten-Free"],
+    "allergens": ["Dairy", "Egg", "Soy", "Mustard"],
+    "benefitDescription": "A simple and quick high-protein, low-carb snack or light meal."
+  },
+  {
+    "name": "Zucchini Lasagna",
+    "nutrition": {"calories": 450, "protein": 30, "carbs": 10, "fat": 35},
+    "ingredientNames": ["Zucchini", "Ground Beef", "Marinara Sauce", "Ricotta Cheese", "Mozzarella Cheese (shredded)", "Parmesan Cheese (grated)", "Salt", "Black Pepper"],
+    "instructions": "Preheat the oven to 375°F (190°C). Grease a baking dish (e.g., 8x8 or 9x9 inch).\nSlice zucchinis lengthwise into thin planks (about 1/8-1/4 inch thick). You can salt them lightly and let them sit to draw out moisture, then pat dry (optional, helps prevent watery lasagna).\nIn a skillet, brown the ground beef over medium heat; drain any excess fat. Stir in the marinara sauce (use a sugar-free variety) and season with salt and pepper. Simmer for a few minutes.\nIn the prepared baking dish, spread a thin layer of the meat sauce.\nArrange a layer of zucchini planks over the sauce.\nSpread a layer of ricotta cheese over the zucchini, followed by a sprinkle of mozzarella.\nRepeat the layers: meat sauce, zucchini, ricotta, mozzarella.\nFinish with a final layer of zucchini (optional), meat sauce, and top generously with the remaining mozzarella and grated parmesan cheese.\nBake for 25-30 minutes, or until the sauce is bubbly and the cheese is melted and golden brown. Let rest for 10 minutes before slicing and serving.",
+    "dietaryTags": ["Keto", "Low-Carb", "Dinner", "Comfort Food", "Gluten-Free"],
+    "allergens": ["Dairy"],
+    "benefitDescription": "A low-carb take on a classic comfort food, replacing pasta with zucchini for fewer carbs and more nutrients."
+  },
+  {
+    "name": "Butter Chicken",
+    "nutrition": {"calories": 500, "protein": 35, "carbs": 5, "fat": 40},
+    "ingredientNames": ["Chicken Breast (boneless, skinless)", "Butter", "Heavy Cream", "Tomato Paste", "Garam Masala", "Garlic Cloves", "Cilantro (fresh)", "Salt", "Black Pepper"],
+    "instructions": "Dice the chicken breasts into bite-sized pieces and season with salt and pepper.\nMelt butter in a large skillet or pan over medium-high heat. Add minced garlic and sauté until fragrant (about 30 seconds).\nAdd the diced chicken to the pan and cook until browned on all sides and cooked through.\nStir in the tomato paste and garam masala, cooking for another minute until fragrant.\nReduce heat to low, pour in the heavy cream, and stir to combine. Simmer gently for 5-10 minutes, allowing the sauce to thicken slightly. Do not boil rapidly.\nTaste and adjust seasoning (salt, pepper, more garam masala) if needed.\nGarnish generously with chopped fresh cilantro before serving. Often served with cauliflower rice on Keto.",
+    "dietaryTags": ["Keto", "Low-Carb", "High-Protein", "Dinner", "Indian Inspired", "Gluten-Free"],
+    "allergens": ["Dairy"],
+    "benefitDescription": "A rich and flavorful Indian-inspired dish that's high in protein and fats, suitable for a ketogenic diet."
+  },
+  {
+    "name": "Eggs Benedict (No English Muffin)",
+    "nutrition": {"calories": 400, "protein": 25, "carbs": 5, "fat": 35},
+    "ingredientNames": ["Large Eggs", "Ham", "Hollandaise Sauce", "Butter"],
+    "instructions": "Prepare hollandaise sauce according to package directions or your recipe (ensure it's keto-friendly if store-bought).\nPoach the eggs: bring water to a gentle simmer in a saucepan, carefully crack eggs into the water, and cook for 3-4 minutes until whites are set but yolks are runny. Remove with a slotted spoon.\nWhile eggs are poaching, heat ham or Canadian bacon slices in a skillet with a little butter until warmed through and slightly browned.\nPlace the warmed ham slices on a plate.\nCarefully top each ham slice with a poached egg.\nSpoon the warm hollandaise sauce over the eggs.\nServe immediately.",
+    "dietaryTags": ["Keto", "Low-Carb", "High-Protein", "Breakfast", "Brunch", "Gluten-Free"],
+    "allergens": ["Egg", "Dairy"],
+    "benefitDescription": "A keto-friendly version of the classic brunch dish, offering protein and rich flavors without the carbs from muffins."
+  },
+  {
+    "name": "Shrimp & Avocado Salad",
+    "nutrition": {"calories": 350, "protein": 25, "carbs": 5, "fat": 25},
+    "ingredientNames": ["Shrimp (cooked)", "Avocado", "Mixed Greens", "Red Onion", "Olive Oil", "Salt", "Black Pepper", "Lime Wedges"],
+    "instructions": "Ensure shrimp are peeled, deveined, and cooked (grill, sauté, or use pre-cooked).\nIn a large bowl, combine mixed greens, sliced avocado, and thinly sliced red onion.\nAdd the cooked shrimp to the bowl.\nDrizzle generously with olive oil.\nSeason with salt and pepper to taste.\nToss gently to combine all ingredients.\nServe immediately with lime wedges on the side for squeezing.",
+    "dietaryTags": ["Keto", "Low-Carb", "High-Protein", "Paleo", "Healthy", "Lunch", "Dinner", "Salad", "Gluten-Free"],
+    "allergens": ["Shellfish"],
+    "benefitDescription": "A light, refreshing salad packed with protein from shrimp and healthy fats from avocado and olive oil."
+  },
+  {
+    "name": "Pork Chops with Cauliflower Mash",
+    "nutrition": {"calories": 500, "protein": 35, "carbs": 10, "fat": 35},
+    "ingredientNames": ["Pork Chop (boneless)", "Cauliflower", "Butter", "Heavy Cream", "Salt", "Black Pepper"],
+    "instructions": "Season the pork chops generously with salt and pepper.\nGrill or pan-fry the pork chops over medium-high heat until cooked through (internal temperature of 145°F or 63°C), about 4-5 minutes per side depending on thickness. Let rest for a few minutes.\nWhile chops cook/rest, steam chopped cauliflower until very tender (about 10-15 minutes).\nDrain the cauliflower well. Transfer to a food processor or bowl. Add butter, heavy cream, salt, and pepper.\nProcess or mash until smooth and creamy. Add more cream or butter if needed for consistency.\nServe the pork chops alongside the cauliflower mash.",
+    "dietaryTags": ["Keto", "Low-Carb", "High-Protein", "Dinner", "Gluten-Free"],
+    "allergens": ["Dairy"],
+    "benefitDescription": "A satisfying low-carb meal with protein-rich pork chops and creamy cauliflower mash as a potato substitute."
+  }
+]

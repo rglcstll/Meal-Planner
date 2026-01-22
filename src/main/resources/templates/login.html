@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meal Planner Login</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+    />
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="logo">🍽️</div>
+      <h1>Meal Planner Login</h1>
+
+      <!--
+        Key Fix: Ensure the form action uses th:action for proper URL resolution by Thymeleaf,
+        pointing to the loginProcessingUrl defined in SecurityConfig.java.
+      -->
+      <form th:action="@{/user/login}" method="post">
+        <div th:if="${param.error}" class="error-message">
+          Invalid email or password.
+        </div>
+
+        <div
+          th:if="${message}"
+          class="success-message"
+          th:text="${message}"
+        ></div>
+
+        <label for="email">Email:</label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          autocomplete="email"
+          required
+        />
+
+        <label for="password">Password:</label>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          autocomplete="current-password"
+          required
+        />
+
+        <button type="submit">Login</button>
+      </form>
+
+      <div class="form-links">
+        <a th:href="@{/user/forgot-password}">Forgot Password?</a>
+        <a th:href="@{/user/register}">Create an Account</a>
+        <a th:href="@{/}">Back to Home</a>
+      </div>
+    </div>
+  </body>
+</html>

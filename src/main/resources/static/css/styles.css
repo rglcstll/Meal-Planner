@@ -1,0 +1,174 @@
+/* Import Poppins font if not already globally available */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+/* CSS Variables - Matching the Dashboard's Eye-Friendly Red Theme */
+:root {
+  --primary-dark: #8B0000; /* Dark Red (Maroon) for main headers/nav */
+  --primary: #B80000;      /* Main Red */
+  --primary-light: #D73A49; /* Lighter Red for hover/accents */
+  --accent: #CB2431;        /* A clear, strong red for primary actions and highlights */
+  
+  --text-light: #f8f9fa; /* For text on dark red backgrounds */
+  --text-dark: #1f2937;  /* Main text color for light backgrounds (dark gray) */
+  --text-muted: #6b7280; /* Muted text for less important info */
+
+  --bg-main: #f9fafb;         /* Main light background for the page (very light gray) */
+  --bg-secondary: #f3f4f6;    /* Slightly darker light gray for subtle contrasts */
+  --bg-element: #ffffff;       /* Background for cards, modals, inputs (white) */
+  --bg-element-hover: #FDECEA; /* Very light pink/red for hover on elements */
+  
+  --border-color: #d1d5db;     /* Default border color (medium gray) */
+  --border-strong: #9ca3af;    /* Stronger border for emphasis */
+  
+  --shadow-color: rgba(0, 0, 0, 0.08); /* Softer shadow */
+  --shadow-strong: rgba(0, 0, 0, 0.12);
+  --shadow-accent: rgba(203, 36, 49, 0.2); /* Light shadow for accent elements */
+
+  /* Retaining old variable names for potential compatibility if some classes were missed,
+     but ideally, all elements should use the new variable names directly. */
+  --input-bg: var(--bg-element); /* Mapped to light theme's input background */
+  --input-border: var(--border-color); /* Mapped to light theme's border */
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(180deg, var(--bg-main) 0%, var(--bg-secondary) 100%); /* Light theme background */
+    color: var(--text-dark); /* Default text for light theme */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.container {
+    background: var(--bg-element); /* White background for the login container */
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px var(--shadow-color); /* Consistent shadow */
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    border-top: 4px solid var(--accent); /* Accent top border */
+}
+
+.logo { 
+    font-size: 3rem;
+    color: var(--accent);
+    margin-bottom: 20px;
+}
+
+.container h1 {
+    color: var(--primary-dark); /* Dark red heading on light background */
+    margin-bottom: 25px;
+    font-size: 1.8rem; /* Adjusted for login context */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: 500;
+    margin-top: 15px;
+    margin-bottom: 8px;
+    color: var(--text-dark); /* Standard dark text for labels */
+    opacity: 0.9;
+    text-align: left;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px 12px; /* Consistent padding */
+    margin-top: 5px; /* Removed, margin is on label */
+    border: 1px solid var(--border-color); /* Standard light theme border */
+    border-radius: 6px; /* Consistent radius */
+    box-sizing: border-box;
+    background-color: var(--bg-element); /* White input background */
+    color: var(--text-dark); /* Dark text in input */
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem; /* Consistent input font size */
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+input[type="password"]::placeholder {
+    color: var(--text-muted); /* Muted placeholder text */
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--shadow-accent); /* Accent shadow from dashboard */
+}
+
+button[type="submit"] {
+    background: var(--accent);
+    color: var(--text-light); /* Light text on accent button */
+    padding: 10px 25px; /* Consistent padding */
+    border: 1px solid var(--accent); /* Consistent border */
+    border-radius: 6px; /* Consistent radius */
+    margin-top: 25px;
+    cursor: pointer;
+    font-size: 1rem; /* Consistent font size */
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+}
+
+button[type="submit"]:hover {
+    background: var(--primary-light);
+    border-color: var(--primary-light);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px var(--shadow-accent); /* Hover shadow from dashboard */
+}
+
+.form-links {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-links a {
+    color: var(--accent); /* Links are accent colored */
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: color 0.3s, opacity 0.3s;
+}
+
+.form-links a:hover {
+    color: var(--primary-light); /* Lighter red on hover */
+    text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .container {
+        padding: 25px 20px; /* Adjusted padding */
+        margin: 10px;
+    }
+    .container h1 {
+        font-size: 1.6rem;
+    }
+    button[type="submit"] {
+        padding: 10px 20px;
+        font-size: 0.95rem;
+    }
+    label {
+        font-size: 0.9rem;
+    }
+    .form-links a {
+        font-size: 0.85rem;
+    }
+}

@@ -1,0 +1,400 @@
+/* Import Poppins font */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+/* CSS Variables - New Eye-Friendly Red Theme */
+:root {
+  --primary-dark: #8B0000; /* Dark Red (Maroon) for main headers/nav */
+  --primary: #B80000;      /* Main Red */
+  --primary-light: #D73A49; /* Lighter Red for hover/accents */
+  --accent: #CB2431;        /* A clear, strong red for primary actions and highlights */
+  
+  --text-light: #f8f9fa;    /* For text on dark red backgrounds */
+  --text-dark: #1f2937;     /* Main text color for light backgrounds (dark gray) */
+  --text-muted: #6b7280;    /* Muted text for less important info */
+
+  --bg-main: #f9fafb;         /* Main light background for the page (very light gray) */
+  --bg-secondary: #f3f4f6;    /* Slightly darker light gray for subtle contrasts */
+  --bg-element: #ffffff;       /* Background for cards, modals, inputs (white) */
+  --bg-element-hover: #FDECEA; /* Very light pink/red for hover on elements */
+  
+  --border-color: #d1d5db;     /* Default border color (medium gray) */
+  --border-strong: #9ca3af;    /* Stronger border for emphasis */
+  
+  --shadow-color: rgba(0, 0, 0, 0.08); /* Softer shadow */
+  --shadow-strong: rgba(0, 0, 0, 0.12);
+  --shadow-accent: rgba(203, 36, 49, 0.2); /* Light shadow for accent elements (using the new red accent) */
+}
+
+/* Global Reset and Box Sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: 'Poppins', sans-serif; 
+    line-height: 1.6;                   
+    color: var(--text-dark);           /* Default text is dark on light background */
+    background: linear-gradient(180deg, var(--bg-main) 0%, var(--bg-secondary) 100%);
+    overflow-x: hidden; 
+}
+
+/* Container Styling */
+.container {
+    width: 100%;
+    max-width: 1200px; 
+    margin: 0 auto;    
+    padding: 0 20px;   
+}
+
+/* Navigation Bar Styling */
+nav {
+    background-color: var(--primary-dark); /* Dark red background for nav */
+    box-shadow: 0 4px 12px var(--shadow-color);  
+    position: sticky; 
+    top: 0;
+    z-index: 100;     
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    padding: 15px 20px; 
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    font-weight: 700; 
+    color: var(--text-light); /* Light text for logo on dark nav */
+    text-decoration: none; 
+}
+
+.logo i { 
+    margin-right: 10px;
+    color: var(--accent); /* Accent color for the icon */
+}
+
+.nav-links {
+    display: flex;
+    list-style: none; 
+}
+
+.nav-links li {
+    margin-left: 25px; 
+}
+
+.nav-links a.nav-button {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s; 
+    background-color: rgba(255, 255, 255, 0.1); /* Slight light background for nav buttons on dark nav */
+    padding: 8px 15px;
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle light border */
+}
+
+.nav-button.active { 
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: var(--text-light);
+}
+
+.nav-links a.nav-button:hover {
+    color: var(--text-light);
+    background-color: var(--accent); 
+    transform: translateY(-2px);    
+    box-shadow: 0 4px 8px var(--shadow-accent); 
+}
+
+.auth-btns a { 
+    text-decoration: none;
+    margin-left: 15px;
+}
+
+/* General Button Styling */
+.btn {
+    display: inline-block;
+    background-color: var(--accent); /* Accent red for buttons */
+    color: var(--text-light); /* Light text on red button */
+    padding: 12px 25px;
+    border: none;
+    border-radius: 50px; 
+    font-size: 1rem;
+    font-weight: 600; 
+    cursor: pointer;
+    transition: all 0.3s; 
+    font-family: 'Poppins', sans-serif; 
+    text-decoration: none;
+}
+
+.btn:hover {
+    background-color: var(--primary-light); /* Lighter red on hover */
+    transform: translateY(-3px);           
+    box-shadow: 0 4px 12px var(--shadow-accent); 
+}
+
+/* Page Header Styling */
+.page-header {
+    /* Light gradient or solid light color for header */
+    background: linear-gradient(135deg, var(--bg-element), var(--bg-secondary)); 
+    padding: 60px 0; 
+    text-align: center;
+    color: var(--text-dark); /* Dark text on light header */
+    border-bottom: 1px solid var(--border-color); /* Subtle border bottom */
+}
+
+.page-header h1 {
+    font-size: 3rem;    
+    margin-bottom: 20px;
+    color: var(--primary-dark); /* Dark red for main heading */
+}
+
+.page-header p {
+    max-width: 800px; 
+    margin: 0 auto;   
+    font-size: 1.1rem;
+    opacity: 0.9;     
+    color: var(--text-muted); /* Muted text */
+}
+
+/* Main Content Area Styling */
+.main-content {
+    padding: 80px 0; 
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.2rem; 
+    margin-bottom: 50px;
+    position: relative; 
+    color: var(--primary-dark); /* Dark red for section titles */
+}
+
+.section-title::after { 
+    content: "";
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: var(--accent); /* Accent red line */
+    margin: 15px auto; 
+}
+
+/* Meal Plans Section Styling */
+.plans-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px; 
+    margin-bottom: 60px;
+}
+
+.plan-card {
+    background-color: var(--bg-element); /* White background for cards */
+    border-radius: 10px; 
+    overflow: hidden;    
+    box-shadow: 0 8px 20px var(--shadow-color); 
+    transition: transform 0.3s, box-shadow 0.3s; 
+    border-bottom: 4px solid var(--accent); /* Accent border at the bottom */
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between; 
+    border: 1px solid var(--border-color); /* Subtle border around card */
+}
+
+.plan-card:hover {
+    transform: translateY(-10px); 
+    box-shadow: 0 12px 24px var(--shadow-strong);
+}
+
+.plan-header {
+    padding: 25px;
+    background-color: var(--bg-secondary); /* Light gray header within card */
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.plan-header h3 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: var(--primary-dark); /* Dark red for card titles */
+}
+
+.plan-header p {
+    font-size: 1.1rem;
+    opacity: 0.8;
+    color: var(--text-muted);
+}
+
+.plan-features {
+    padding: 25px;
+    flex-grow: 1; 
+}
+
+.plan-features ul {
+    list-style: none; 
+    margin-bottom: 30px;
+}
+
+.plan-features li {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center; 
+    color: var(--text-dark);
+}
+
+.plan-features li i { 
+    color: var(--accent); /* Accent red for checkmarks */
+    margin-right: 10px;
+}
+
+.plan-footer {
+    padding: 0 25px 25px; 
+    text-align: center;
+    min-height: 57px; 
+}
+
+/* Custom Plan Section Styling */
+.custom-plan {
+    background-color: var(--bg-secondary); /* Light gray background */
+    padding: 50px;
+    border-radius: 10px;
+    margin-top: 60px;
+    box-shadow: 0 8px 20px var(--shadow-color);
+    text-align: center;
+    border: 1px solid var(--border-color);
+}
+
+.custom-plan h3 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: var(--primary-dark);
+}
+
+.custom-plan p {
+    max-width: 800px;
+    margin: 0 auto 30px; 
+    opacity: 0.9;
+    color: var(--text-muted);
+}
+
+/* Footer Styling */
+footer {
+    background-color: var(--primary-dark); /* Dark red footer */
+    color: var(--text-light); /* Light text on footer */
+    padding: 50px 0 20px; 
+    margin-top: 80px;     
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.footer-column h4 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    position: relative; 
+    color: var(--text-light); /* Ensure footer headings are light */
+}
+
+.footer-column h4::after { 
+    content: '';
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: var(--accent); /* Accent red line */
+    margin-top: 10px;
+}
+
+.footer-column ul {
+    list-style: none;
+}
+
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+
+.footer-column a {
+    color: var(--text-light);
+    opacity: 0.8; 
+    text-decoration: none;
+    transition: opacity 0.3s, color 0.3s; 
+}
+
+.footer-column a:hover {
+    opacity: 1; 
+    color: var(--accent); 
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.15); /* Lighter border for dark footer */
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* Responsive Design Adjustments */
+@media (max-width: 768px) { 
+    .nav-links {
+        display: none; 
+    }
+    
+    .page-header h1 {
+        font-size: 2.2rem; 
+    }
+    
+    .plan-card {
+        max-width: 400px; 
+        margin: 0 auto 30px; 
+    }
+
+    .plans-container {
+            grid-template-columns: 1fr; 
+    }
+    
+    .custom-plan {
+        padding: 30px 20px; 
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr; 
+        text-align: center; 
+    }
+    .footer-column h4::after {
+        margin-left: auto; 
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 480px) { 
+    .page-header h1 {
+        font-size: 1.8rem;
+    }
+    .page-header p {
+        font-size: 1rem;
+    }
+    .section-title {
+        font-size: 1.8rem;
+    }
+    .btn { 
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    .plan-header h3 {
+        font-size: 1.5rem;
+    }
+    .plan-header p {
+        font-size: 1rem;
+    }
+    .custom-plan h3 {
+        font-size: 1.6rem;
+    }
+}

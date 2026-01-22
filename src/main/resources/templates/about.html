@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Planner - About Us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap">
+    <link rel="stylesheet" th:href="@{/css/homepage.css}">
+    <style>
+        /* Additional styles specific to about page */
+        .about-section {
+            background-color: var(--bg-element);
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px var(--shadow-color);
+        }
+        .about-section h3 {
+            color: var(--primary-dark);
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 10px;
+        }
+        .about-section p {
+            color: var(--text-dark);
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+        .team-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        .team-member-card {
+            background-color: var(--bg-secondary);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 3px 10px var(--shadow-color);
+        }
+        .team-member-card h4 {
+            color: var(--primary);
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+        }
+        .team-member-card .role {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container nav-container">
+            <a th:href="@{/}" class="logo">
+                <i class="fas fa-utensils"></i> Meal Planner
+            </a>
+            <ul class="nav-links">
+                <li><a th:href="@{/meal-plans.html}" class="nav-button">Meal Plans</a></li>
+                <li><a th:href="@{/recipes.html}" class="nav-button">Recipes</a></li>
+                <li><a th:href="@{/nutrition.html}" class="nav-button">Nutrition</a></li>
+                <li><a th:href="@{/about.html}" class="nav-button active">About</a></li>
+            </ul>
+            <div class="auth-btns">
+                <a th:href="@{/user/login}" class="btn">Login</a>
+                <a th:href="@{/user/register}" class="btn">Signup</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h1>About Meal Planner</h1>
+            <p>Learn more about our mission, our team, and how we're dedicated to helping you achieve your health and wellness goals through smart meal planning.</p>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <section class="about-section">
+                <h3>Our Mission</h3>
+                <p>At Meal Planner, our mission is to simplify healthy eating and empower individuals to take control of their nutrition. We believe that planning your meals is a fundamental step towards a healthier lifestyle, saving you time, reducing food waste, and helping you achieve your fitness and wellness objectives.</p>
+                <p>We strive to provide intuitive tools, delicious recipes, and personalized meal plans that cater to diverse dietary needs and preferences. Whether you're a busy professional, an athlete, or someone just starting their health journey, Meal Planner is here to support you every step of the way.</p>
+            </section>
+
+            <section class="about-section">
+                <h3>What We Offer</h3>
+                <ul>
+                    <li><strong>Personalized Meal Plans:</strong> Tailored plans based on your caloric needs, dietary restrictions (vegetarian, vegan, keto, paleo, etc.), and health goals.</li>
+                    <li><strong>Extensive Recipe Database:</strong> Thousands of healthy and delicious recipes with detailed nutritional information and cooking instructions.</li>
+                    <li><strong>Smart Grocery Lists:</strong> Automatically generated shopping lists based on your weekly meal plan, making grocery shopping a breeze.</li>
+                    <li><strong>Nutrition Tracking:</strong> Monitor your daily and weekly intake of calories, macronutrients, and micronutrients through our integrated dashboard.</li>
+                    <li><strong>Allergy Management:</strong> Easily track your allergies and filter out recipes that contain problematic ingredients.</li>
+                    <li><strong>Community & Support:</strong> Connect with other users, share tips, and get support from our team.</li>
+                </ul>
+            </section>
+
+            <section class="about-section">
+                <h2 class="section-title" style="margin-bottom: 30px;">Meet the Team</h2>
+                <div class="team-section">
+                    <div class="team-member-card">
+                        <div style="width: 120px; height: 120px; border-radius: 50%; background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; border: 3px solid var(--accent);">
+                            <i class="fas fa-user" style="font-size: 3rem; color: white;"></i>
+                        </div>
+                        <h4>Jane Doe</h4>
+                        <p class="role">Lead Nutritionist & Founder</p>
+                        <p>Jane is passionate about making healthy eating accessible to everyone.</p>
+                    </div>
+                    <div class="team-member-card">
+                        <div style="width: 120px; height: 120px; border-radius: 50%; background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; border: 3px solid var(--accent);">
+                            <i class="fas fa-user" style="font-size: 3rem; color: white;"></i>
+                        </div>
+                        <h4>John Smith</h4>
+                        <p class="role">Head Chef & Recipe Developer</p>
+                        <p>John brings culinary expertise to create delicious and easy-to-follow recipes.</p>
+                    </div>
+                    <div class="team-member-card">
+                        <div style="width: 120px; height: 120px; border-radius: 50%; background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; border: 3px solid var(--accent);">
+                            <i class="fas fa-user" style="font-size: 3rem; color: white;"></i>
+                        </div>
+                        <h4>Alex Lee</h4>
+                        <p class="role">Lead Software Engineer</p>
+                        <p>Alex ensures our platform is intuitive, reliable, and user-friendly.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="about-section">
+                <h3>Get in Touch</h3>
+                <p>We'd love to hear from you! Whether you have a question, feedback, or a success story to share, please don't hesitate to contact us. Visit our <a href="#">Contact Page</a> or follow us on social media.</p>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a th:href="@{/about.html}">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Features</h4>
+                    <ul>
+                        <li><a th:href="@{/meal-plans.html}">Meal Plans</a></li>
+                        <li><a th:href="@{/nutrition.html}">Nutrition Tracking</a></li>
+                        <li><a th:href="@{/recipes.html}">Recipe Database</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span th:text="${#dates.year(#dates.createNow())}">2025</span> Meal Planner | All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

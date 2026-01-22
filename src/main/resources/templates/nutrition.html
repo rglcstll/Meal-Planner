@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Planner - Nutrition Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap">
+    <link rel="stylesheet" th:href="@{/css/homepage.css}">
+    <style>
+        /* Additional styles specific to nutrition page */
+        .nutrition-section {
+            background-color: var(--bg-element);
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px var(--shadow-color);
+        }
+        .nutrition-section h3 {
+            color: var(--primary-dark);
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 10px;
+        }
+        .nutrition-section p, .nutrition-section ul {
+            color: var(--text-dark);
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+        .nutrition-section ul {
+            list-style: disc;
+            padding-left: 20px;
+        }
+        .nutrition-section li {
+            margin-bottom: 8px;
+        }
+        .chart-container { /* Placeholder for charts */
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: var(--bg-secondary);
+            border-radius: 8px;
+            text-align: center;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container nav-container">
+            <a th:href="@{/}" class="logo">
+                <i class="fas fa-utensils"></i> Meal Planner
+            </a>
+            <ul class="nav-links">
+                <li><a th:href="@{/meal-plans.html}" class="nav-button">Meal Plans</a></li>
+                <li><a th:href="@{/recipes.html}" class="nav-button">Recipes</a></li>
+                <li><a th:href="@{/nutrition.html}" class="nav-button active">Nutrition</a></li>
+                <li><a th:href="@{/about.html}" class="nav-button">About</a></li>
+            </ul>
+            <div class="auth-btns">
+                <a th:href="@{/user/login}" class="btn">Login</a>
+                <a th:href="@{/user/register}" class="btn">Signup</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h1>Nutrition Guide & Tools</h1>
+            <p>Understand the essentials of nutrition, track your intake, and make informed choices for a healthier lifestyle. Login or Signup to access personalized tracking tools.</p>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <h2 class="section-title">Understanding Nutrition</h2>
+
+            <section class="nutrition-section">
+                <h3>Macronutrients: The Building Blocks</h3>
+                <p>Macronutrients are the nutrients your body needs in larger amounts: carbohydrates, proteins, and fats. Each plays a vital role in maintaining health and providing energy.</p>
+                <ul>
+                    <li><strong>Carbohydrates:</strong> Your body's main source of energy. Found in grains, fruits, vegetables, and legumes. Choose complex carbs like whole grains for sustained energy.</li>
+                    <li><strong>Proteins:</strong> Essential for building and repairing tissues, making enzymes and hormones. Found in meat, poultry, fish, dairy, beans, lentils, and tofu.</li>
+                    <li><strong>Fats:</strong> Important for energy storage, cell function, and absorption of fat-soluble vitamins. Focus on healthy unsaturated fats from sources like avocados, nuts, seeds, and olive oil.</li>
+                </ul>
+            </section>
+
+            <section class="nutrition-section">
+                <h3>Micronutrients: Vitamins & Minerals</h3>
+                <p>Micronutrients are vitamins and minerals needed in smaller amounts but are crucial for various bodily functions, including energy production, immune function, and blood clotting.</p>
+                <p>A balanced diet rich in fruits, vegetables, whole grains, lean proteins, and healthy fats will typically provide an adequate supply of most micronutrients.</p>
+            </section>
+
+            <section class="nutrition-section">
+                <h3>Calorie Balance</h3>
+                <p>Understanding calorie balance is key to managing weight. Calories are units of energy your body gets from food and drinks.</p>
+                <ul>
+                    <li><strong>Calorie Deficit:</strong> Consuming fewer calories than your body burns, leading to weight loss.</li>
+                    <li><strong>Calorie Maintenance:</strong> Consuming the same number of calories your body burns, maintaining your current weight.</li>
+                    <li><strong>Calorie Surplus:</strong> Consuming more calories than your body burns, leading to weight gain (can be muscle or fat).</li>
+                </ul>
+                <p>Our dashboard tools (available after login) can help you estimate your daily calorie needs based on your activity level and goals.</p>
+            </section>
+
+            <div class="chart-container">
+                <p>Login to access personalized nutrition charts and tracking features on your dashboard!</p>
+                <i class="fas fa-chart-pie" style="font-size: 50px; color: var(--accent); margin-top: 20px;"></i>
+            </div>
+
+             <div class="custom-plan" style="text-align: center; margin-top: 40px;">
+                <h3>Ready to Track Your Nutrition?</h3>
+                <p>Sign up or log in to access our comprehensive nutrition tracking tools, personalized insights, and detailed meal analysis on your dashboard.</p>
+                <a th:href="@{/user/dashboard}" class="btn">Go to Dashboard</a>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a th:href="@{/about.html}">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Features</h4>
+                    <ul>
+                        <li><a th:href="@{/meal-plans.html}">Meal Plans</a></li>
+                        <li><a th:href="@{/nutrition.html}">Nutrition Tracking</a></li>
+                        <li><a th:href="@{/recipes.html}">Recipe Database</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span th:text="${#dates.year(#dates.createNow())}">2025</span> Meal Planner | All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

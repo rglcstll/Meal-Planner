@@ -1,0 +1,20 @@
+CREATE TABLE IF NOT EXISTS allergies (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255)
+);
+
+CREATE TABLE IF NOT EXISTS users (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255),
+    password VARCHAR(255),
+    email VARCHAR(255)
+);
+
+CREATE TABLE IF NOT EXISTS foods (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255),
+    calories INT,
+    protein DOUBLE,
+    carbs DOUBLE,
+    fat DOUBLE
+);

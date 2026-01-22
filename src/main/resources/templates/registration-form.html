@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Planner Registration</title>
+    <link rel="stylesheet" th:href="@{/css/registration-form.css}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Meal Planner Registration</h1>
+            <div class="logo">🍽️</div>
+        </div>
+
+        <form th:action="@{/user/register}" method="post" th:object="${user}">
+            <div th:if="${error}" class="error-message" th:text="${error}"></div>
+            <div th:if="${param.error}" class="error-message">An unexpected error occurred during registration.</div>
+            <div th:if="${param.logout}" class="success-message">You have been logged out.</div>
+
+            <div class="form-container">
+                <div class="form-section">
+                    <div class="section-title">Account Info</div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" th:field="*{email}" required>
+                        <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error-text">Email Error</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" th:field="*{password}" required>
+                        <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error-text">Password Error</span>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <div class="section-title">Personal Info</div>
+                    <div class="form-group">
+                        <label for="fullName">Full Name:</label>
+                        <input type="text" id="fullName" name="fullName" th:field="*{fullName}" required>
+                        <span th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}" class="error-text">Name Error</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Age:</label>
+                        <input type="number" id="age" name="age" th:field="*{age}" required min="1" max="120">
+                        <span th:if="${#fields.hasErrors('age')}" th:errors="*{age}" class="error-text">Age Error</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="gender">Gender:</label>
+                        <select id="gender" name="gender" th:field="*{gender}" required>
+                            <option value="">Select Gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <span th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}" class="error-text">Gender Error</span>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <div class="section-title">Physical Info</div>
+                    <div class="form-group">
+                        <label for="height">Height (cm):</label>
+                        <input type="number" id="height" name="height" th:field="*{height}" required min="50" max="300">
+                        <span th:if="${#fields.hasErrors('height')}" th:errors="*{height}" class="error-text">Height Error</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="weight">Weight (kg):</label>
+                        <input type="number" id="weight" name="weight" th:field="*{weight}" required min="1" max="500">
+                        <span th:if="${#fields.hasErrors('weight')}" th:errors="*{weight}" class="error-text">Weight Error</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="activityLevel">Activity Level:</label>
+                        <select id="activityLevel" name="activityLevel" th:field="*{activityLevel}" required>
+                            <option value="">Select Activity Level</option>
+                            <option value="sedentary">Sedentary (little or no exercise)</option>
+                            <option value="light">Light Activity (light exercise/sports 1-3 days/week)</option>
+                            <option value="moderate">Moderate Activity (moderate exercise/sports 3-5 days/week)</option>
+                            <option value="active">Active (hard exercise/sports 6-7 days a week)</option>
+                            <option value="very_active">Very Active (very hard exercise/sports & physical job)</option>
+                        </select>
+                        <span th:if="${#fields.hasErrors('activityLevel')}" th:errors="*{activityLevel}" class="error-text">Activity Level Error</span>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <div class="section-title">Dietary Info</div>
+                    <div class="form-group">
+                        <label for="dietPreference">Dietary Preference:</label>
+                        <select id="dietPreference" name="dietPreference" th:field="*{dietPreference}">
+                            <option value="none">No Specific Preference</option>
+                            <option value="standard">Standard</option>
+                            <option value="vegetarian">Vegetarian</option>
+                            <option value="vegan">Vegan</option>
+                            <option value="keto">Keto</option>
+                            <option value="paleo">Paleo</option>
+                        </select>
+                        <span th:if="${#fields.hasErrors('dietPreference')}" th:errors="*{dietPreference}" class="error-text">Diet Preference Error</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-top: 20px; text-align: center; font-size: 0.9em;">
+                <p>
+                    By clicking "Register", you agree to our
+                    <a href="#" id="privacyPolicyLink" style="color: var(--accent); text-decoration: underline;">Privacy Policy</a> and
+                    <a href="#" id="termsOfServiceLink" style="color: var(--accent); text-decoration: underline;">Terms of Service</a>.
+                </p>
+            </div>
+
+            <div class="submit-button-container">
+                <button type="submit">Register</button>
+                <button type="button" class="btn-secondary-themed" th:onclick="|window.location.href='@{/user/login}'|">Already have an account? Login</button>
+            </div>
+        </form>
+    </div>
+
+    <div id="privacyPolicyModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Privacy Policy</h2>
+            <div class="modal-body">
+                <p><strong>Effective Date: May 29, 2025</strong></p>
+                <p>This Privacy Policy describes how Meal Planner ("we," "us," or "our") collects, uses, and shares personal information of users of this website and our mobile application (collectively, the "Service"). This policy is intended to comply with the Republic Act No. 10173, also known as the Data Privacy Act of 2012 of the Philippines, and its Implementing Rules and Regulations.</p>
+
+                <h3>1. Personal Information We Collect</h3>
+                <p>We collect the following categories of personal information:</p>
+                <ul>
+                    <li><strong>Information You Provide to Us:</strong>
+                        <ul>
+                            <li><strong>Account Information:</strong> When you register for an account, we collect your full name, email address, password, age, gender, height (cm), weight (kg), activity level, and dietary preferences.</li>
+                            <li><strong>User Content:</strong> Information you provide when you use the Service, such as custom meals, saved meal plans, allergy information, and meal completion status.</li>
+                            <li><strong>Communications:</strong> If you contact us directly, we may receive additional information about you.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Information We Collect Automatically:</strong>
+                        <ul>
+                            <li><strong>Usage Information:</strong> We may collect information about your interactions with our Service, such as the pages or features you access, the time spent on those pages, and other statistics.</li>
+                            <li><strong>Device Information:</strong> We may collect information about the device you use to access our Service, including IP address, operating system, browser type, and device identifiers.</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h3>2. How We Use Your Personal Information</h3>
+                <p>We use your personal information for the following purposes:</p>
+                <ul>
+                    <li>To provide, operate, maintain, and improve our Service, including personalizing meal plans and nutritional information.</li>
+                    <li>To create and manage your account.</li>
+                    <li>To communicate with you, including responding to your inquiries and sending you service-related announcements.</li>
+                    <li>To monitor and analyze trends, usage, and activities in connection with our Service.</li>
+                    <li>To detect, investigate, and prevent fraudulent transactions and other illegal activities, and protect the rights and property of Meal Planner and others.</li>
+                    <li>To comply with legal obligations.</li>
+                </ul>
+                <p>The collection and processing of your personal information are based on your consent, the necessity to perform a contract with you (e.g., to provide the Service), our legitimate interests, or as required by law.</p>
+
+                <h3>3. Sharing and Disclosure of Personal Information</h3>
+                <p>We do not sell your personal information. We may share your personal information in the following circumstances:</p>
+                <ul>
+                    <li><strong>Service Providers:</strong> We may share your information with third-party vendors and service providers that perform services on our behalf, such as hosting, email delivery, and analytics. These service providers will only have access to your information as necessary to perform their functions and are contractually obligated to protect your information.</li>
+                    <li><strong>Legal Requirements:</strong> We may disclose your information if required to do so by law or in the good faith belief that such action is necessary to comply with a legal obligation, protect and defend our rights or property, prevent fraud, act in urgent circumstances to protect the personal safety of users of the Service, or protect against legal liability.</li>
+                    <li><strong>Business Transfers:</strong> In the event of a merger, acquisition, reorganization, bankruptcy, or other similar event, your personal information may be transferred as part of the transaction.</li>
+                </ul>
+
+                <h3>4. Your Rights as a Data Subject</h3>
+                <p>In accordance with the Data Privacy Act of 2012, you have the right to:</p>
+                <ul>
+                    <li>Be informed whether personal information pertaining to you shall be, are being, or have been processed.</li>
+                    <li>Reasonable access to your personal information upon demand.</li>
+                    <li>Dispute the inaccuracy or error in your personal information and have us correct it immediately and accordingly.</li>
+                    <li>Suspend, withdraw, or order the blocking, removal, or destruction of your personal information from our filing system upon discovery and substantial proof that the personal information are incomplete, outdated, false, unlawfully obtained, used for unauthorized purposes, or are no longer necessary for the purposes for which they were collected.</li>
+                    <li>Be indemnified for any damages sustained due to such inaccurate, incomplete, outdated, false, unlawfully obtained, or unauthorized use of personal information.</li>
+                    <li>Lodge a complaint with the National Privacy Commission if you feel that your personal information has been misused, maliciously disclosed, or improperly disposed, or that any of your data privacy rights have been violated.</li>
+                </ul>
+                <p>To exercise these rights, please contact us using the contact information provided below.</p>
+
+                <h3>5. Data Security</h3>
+                <p>We implement reasonable and appropriate organizational, physical, and technical security measures for the protection of personal information. We strive to protect your personal information from loss, misuse, unauthorized access, disclosure, alteration, and destruction.</p>
+
+                <h3>6. Data Retention</h3>
+                <p>We will retain your personal information for as long as your account is active or as needed to provide you services and to comply with our legal obligations, resolve disputes, and enforce our agreements. If you wish to cancel your account or request that we no longer use your information to provide you services, contact us.</p>
+
+                <h3>7. Children's Privacy</h3>
+                <p>Our Service is not directed to individuals under the age of 13 (or a higher age threshold depending on applicable law). We do not knowingly collect personal information from children. If we become aware that a child has provided us with personal information, we will take steps to delete such information.</p>
+
+                <h3>8. Changes to This Privacy Policy</h3>
+                <p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Effective Date" at the top. You are advised to review this Privacy Policy periodically for any changes.</p>
+
+                <h3>9. Contact Us</h3>
+                <p>If you have any questions about this Privacy Policy or our data protection practices, please contact us at:</p>
+                <p>Meal Planner<br>
+                   <br>
+                   rogelangelo2@gmail.com<br>
+                  </p>
+                <p>You may also contact our Data Protection Officer (if applicable) at [DPO Email Address].</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="termsOfServiceModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Terms of Service</h2>
+            <div class="modal-body">
+                <p><strong>Effective Date: May 29, 2025</strong></p>
+                <p>Welcome to Meal Planner! These Terms of Service ("Terms") govern your use of the Meal Planner website and mobile application (collectively, the "Service") operated by Meal Planner ("us", "we", or "our").</p>
+                <p>Please read these Terms carefully before using our Service. Your access to and use of the Service is conditioned on your acceptance of and compliance with these Terms. These Terms apply to all visitors, users, and others who access or use the Service.</p>
+                <p><strong>By accessing or using the Service you agree to be bound by these Terms. If you disagree with any part of the terms then you may not access the Service.</strong></p>
+
+                <h3>1. Accounts</h3>
+                <p>When you create an account with us, you must provide us with information that is accurate, complete, and current at all times. Failure to do so constitutes a breach of the Terms, which may result in immediate termination of your account on our Service.</p>
+                <p>You are responsible for safeguarding the password that you use to access the Service and for any activities or actions under your password, whether your password is with our Service or a third-party service. You agree not to disclose your password to any third party. You must notify us immediately upon becoming aware of any breach of security or unauthorized use of your account.</p>
+                <p>You may not use as a username the name of another person or entity or that is not lawfully available for use, a name or trademark that is subject to any rights of another person or entity other than you without appropriate authorization, or a name that is otherwise offensive, vulgar or obscene.</p>
+
+                <h3>2. Use of the Service</h3>
+                <p>Our Service provides meal planning tools, recipes, and nutritional information. This information is for general guidance and informational purposes only. It is not intended as a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition or dietary changes.</p>
+                <p>You agree not to use the Service:</p>
+                <ul>
+                    <li>In any way that violates any applicable national or international law or regulation (including, without limitation, any laws regarding the export of data or software to and from the Philippines or other countries).</li>
+                    <li>For the purpose of exploiting, harming, or attempting to exploit or harm minors in any way by exposing them to inappropriate content, asking for personally identifiable information, or otherwise.</li>
+                    <li>To transmit, or procure the sending of, any advertising or promotional material, including any "junk mail," "chain letter," "spam," or any other similar solicitation.</li>
+                    <li>To impersonate or attempt to impersonate Meal Planner, a Meal Planner employee, another user, or any other person or entity.</li>
+                    <li>In any way that infringes upon the rights of others, or in any way is illegal, threatening, fraudulent, or harmful, or in connection with any unlawful, illegal, fraudulent, or harmful purpose or activity.</li>
+                </ul>
+
+                <h3>3. Intellectual Property</h3>
+                <p>The Service and its original content (excluding content provided by users), features, and functionality are and will remain the exclusive property of Meal Planner and its licensors. The Service is protected by copyright, trademark, and other laws of both the Philippines and foreign countries. Our trademarks and trade dress may not be used in connection with any product or service without our prior written consent.</p>
+
+                <h3>4. User Content</h3>
+                <p>Our Service may allow you to post, link, store, share and otherwise make available certain information, text, graphics, videos, or other material ("User Content"). You are responsible for the User Content that you post on or through the Service, including its legality, reliability, and appropriateness.</p>
+                <p>By posting User Content on or through the Service, you represent and warrant that: (i) the User Content is yours (you own it) and/or you have the right to use it and the right to grant us the rights and license as provided in these Terms, and (ii) that the posting of your User Content on or through the Service does not violate the privacy rights, publicity rights, copyrights, contract rights or any other rights of any person or entity.</p>
+
+                <h3>5. Termination</h3>
+                <p>We may terminate or suspend your account and bar access to the Service immediately, without prior notice or liability, under our sole discretion, for any reason whatsoever and without limitation, including but not limited to a breach of the Terms.</p>
+                <p>If you wish to terminate your account, you may simply discontinue using the Service or contact us to request account deletion.</p>
+
+                <h3>6. Disclaimer of Warranties; Limitation of Liability</h3>
+                <p>The Service is provided on an "AS IS" and "AS AVAILABLE" basis. The Service is provided without warranties of any kind, whether express or implied, including, but not limited to, implied warranties of merchantability, fitness for a particular purpose, non-infringement, or course of performance.</p>
+                <p>Meal Planner, its subsidiaries, affiliates, and its licensors do not warrant that a) the Service will function uninterrupted, secure or available at any particular time or location; b) any errors or defects will be corrected; c) the Service is free of viruses or other harmful components; or d) the results of using the Service will meet your requirements.</p>
+                <p>In no event shall Meal Planner, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from (i) your access to or use of or inability to access or use the Service; (ii) any conduct or content of any third party on the Service; (iii) any content obtained from the Service; and (iv) unauthorized access, use or alteration of your transmissions or content, whether based on warranty, contract, tort (including negligence) or any other legal theory, whether or not we have been informed of the possibility of such damage, and even if a remedy set forth herein is found to have failed of its essential purpose.</p>
+
+                <h3>7. Governing Law</h3>
+                <p>These Terms shall be governed and construed in accordance with the laws of the Republic of the Philippines, without regard to its conflict of law provisions.</p>
+                <p>Our failure to enforce any right or provision of these Terms will not be considered a waiver of those rights. If any provision of these Terms is held to be invalid or unenforceable by a court, the remaining provisions of these Terms will remain in effect. These Terms constitute the entire agreement between us regarding our Service, and supersede and replace any prior agreements we might have had between us regarding the Service.</p>
+
+                <h3>8. Changes to Terms</h3>
+                <p>We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material, we will provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion. By continuing to access or use our Service after any revisions become effective, you agree to be bound by the revised terms. If you do not agree to the new terms, you are no longer authorized to use the Service.</p>
+
+                <h3>9. Contact Us</h3>
+                <p>If you have any questions about these Terms, please contact us at:</p>
+                <p>Meal Planner<br>
+                   rogelangelo2@gmail.com</p>
+            </div>
+        </div>
+    </div>
+
+    <script th:src="@{/js/registration-form.js}"></script>
+    <script>
+        // JavaScript for Modals
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get modals
+            var privacyModal = document.getElementById("privacyPolicyModal");
+            var termsModal = document.getElementById("termsOfServiceModal");
+
+            // Get links that open the modals
+            var privacyLink = document.getElementById("privacyPolicyLink");
+            var termsLink = document.getElementById("termsOfServiceLink");
+
+            // Get <span> elements that close the modals
+            var closeButtons = document.getElementsByClassName("close-button");
+
+            // Function to open a modal
+            function openModal(modal) {
+                if (modal) modal.style.display = "block";
+            }
+
+            // Function to close a modal
+            function closeModal(modal) {
+                if (modal) modal.style.display = "none";
+            }
+
+            // Event listeners for links
+            if (privacyLink) {
+                privacyLink.onclick = function(event) {
+                    event.preventDefault(); // Prevent page jump
+                    openModal(privacyModal);
+                }
+            }
+            if (termsLink) {
+                termsLink.onclick = function(event) {
+                    event.preventDefault(); // Prevent page jump
+                    openModal(termsModal);
+                }
+            }
+
+            // Event listeners for close buttons
+            for (var i = 0; i < closeButtons.length; i++) {
+                closeButtons[i].onclick = function() {
+                    closeModal(this.closest('.modal'));
+                }
+            }
+
+            // Close modal if user clicks outside of it
+            window.onclick = function(event) {
+                if (event.target.classList.contains('modal')) {
+                    closeModal(event.target);
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
