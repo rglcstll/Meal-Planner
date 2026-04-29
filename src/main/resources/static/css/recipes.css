@@ -1,0 +1,573 @@
+/* Editorial Crimson — Recipes Page */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+
+:root {
+  --bg:          #0B0B0B;
+  --surface:     #151515;
+  --surface-2:   #1E1E1E;
+  --surface-3:   #272727;
+  --text:        #EDE8DC;
+  --text-muted:  #7A7268;
+  --accent:      #BF1B2C;
+  --accent-h:    #D41F32;
+  --accent-glow: rgba(191, 27, 44, 0.18);
+  --accent-dim:  rgba(191, 27, 44, 0.08);
+  --border:      rgba(237, 232, 220, 0.07);
+  --border-s:    rgba(237, 232, 220, 0.13);
+  --shadow:      rgba(0, 0, 0, 0.55);
+  --shadow-s:    rgba(0, 0, 0, 0.75);
+  --shadow-accent: rgba(191, 27, 44, 0.22);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ===== Filter Bar ===== */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 22px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  margin-bottom: 28px;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filter-group label {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  white-space: nowrap;
+}
+
+.filter-group input[type="text"],
+.filter-group select {
+  background: var(--surface-3);
+  border: 1px solid var(--border-s);
+  border-radius: 3px;
+  color: var(--text);
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.88rem;
+  padding: 8px 12px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.filter-group input[type="text"]:focus,
+.filter-group select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.filter-group input[type="text"]::placeholder {
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+
+.filter-group select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%237A7268' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 28px;
+  cursor: pointer;
+}
+
+.filter-group select option {
+  background: var(--surface-3);
+  color: var(--text);
+}
+
+.result-count {
+  margin-left: auto;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* ===== Recipe Grid ===== */
+.recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  animation: fadeIn 0.35s ease both;
+}
+
+/* ===== Recipe Card ===== */
+.recipe-card {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  cursor: pointer;
+}
+
+.recipe-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 36px var(--shadow);
+  border-color: var(--border-s);
+  border-left-color: var(--accent-h);
+}
+
+/* ===== Recipe Card Image ===== */
+.recipe-card-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+  background: var(--surface-3);
+  border-bottom: 1px solid var(--border);
+}
+
+/* ===== Recipe Card Difficulty Badge ===== */
+.recipe-card-difficulty {
+  display: inline-block;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  padding: 3px 9px;
+  border-radius: 2px;
+  background: var(--accent-dim);
+  color: #E08090;
+  border: 1px solid rgba(191, 27, 44, 0.25);
+}
+
+/* ===== Recipe Card Content ===== */
+.recipe-card-content {
+  padding: 18px 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.recipe-card-content h3 {
+  font-family: 'Spectral', serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.3;
+  letter-spacing: -0.005em;
+}
+
+.recipe-card-content p {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  flex: 1;
+}
+
+/* ===== Recipe Tags ===== */
+.recipe-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* ===== Recipe Tag ===== */
+.recipe-tag {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: var(--surface-3);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 3px 8px;
+  text-transform: capitalize;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.recipe-tag:hover {
+  color: var(--text);
+  border-color: var(--border-s);
+}
+
+/* ===== Recipe Meta (card) ===== */
+.recipe-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.recipe-meta span {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.recipe-meta i {
+  color: var(--accent);
+  font-size: 0.75rem;
+}
+
+/* ===== View Button ===== */
+.btn-view {
+  display: inline-block;
+  margin-top: auto;
+  padding: 8px 16px;
+  background: var(--accent);
+  color: #fff;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  align-self: flex-start;
+}
+
+.btn-view:hover {
+  background: var(--accent-h);
+  transform: translateY(-1px);
+  box-shadow: 0 5px 14px var(--shadow-accent);
+}
+
+/* ===== Loading Container ===== */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding: 80px 24px;
+  text-align: center;
+}
+
+/* ===== Spinner ===== */
+.spinner {
+  width: 44px;
+  height: 44px;
+  border: 3px solid var(--border-s);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+}
+
+.loading-container p {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* ===== Empty / Error State ===== */
+.empty-state,
+.error-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 80px 24px;
+  text-align: center;
+  animation: fadeIn 0.35s ease both;
+}
+
+.empty-state i,
+.error-state i {
+  font-size: 2.5rem;
+  color: var(--text-muted);
+  opacity: 0.5;
+}
+
+.empty-state p,
+.error-state p {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  max-width: 380px;
+  line-height: 1.6;
+}
+
+.error-state i {
+  color: var(--accent);
+  opacity: 0.7;
+}
+
+/* ===== Modal Overlay ===== */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.78);
+  backdrop-filter: blur(5px);
+  z-index: 1000;
+  overflow-y: auto;
+  padding: 36px 16px;
+}
+
+.modal-overlay.active {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+/* ===== Modal ===== */
+.modal {
+  background: var(--surface-2);
+  border: 1px solid var(--border-s);
+  border-top: 3px solid var(--accent);
+  border-radius: 4px;
+  width: 100%;
+  max-width: 720px;
+  box-shadow: 0 32px 80px var(--shadow-s);
+  animation: fadeIn 0.3s ease both;
+  overflow: hidden;
+}
+
+/* ===== Modal Header ===== */
+.modal-header {
+  background: var(--surface-3);
+  border-bottom: 1px solid var(--border);
+  padding: 24px 28px 20px;
+  position: relative;
+}
+
+.modal-header h2 {
+  font-family: 'Spectral', serif;
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 8px;
+  padding-right: 36px;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+}
+
+/* ===== Modal Header Meta ===== */
+.modal-header-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.modal-header-meta span {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.modal-header-meta i {
+  color: var(--accent);
+  font-size: 0.75rem;
+}
+
+/* ===== Modal Close ===== */
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 3px;
+  transition: color 0.2s, background 0.2s;
+}
+
+.modal-close:hover {
+  color: var(--accent);
+  background: var(--accent-dim);
+}
+
+/* ===== Modal Body ===== */
+.modal-body {
+  padding: 24px 28px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  max-height: calc(100vh - 200px);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--surface-3) transparent;
+}
+
+/* ===== Modal Section ===== */
+.modal-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.modal-section h3 {
+  font-family: 'Spectral', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.modal-section h3 i {
+  color: var(--accent);
+  font-size: 0.85rem;
+}
+
+/* ===== Nutrition Grid (modal) ===== */
+.nutrition-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 10px;
+}
+
+/* ===== Nutrition Item (modal) ===== */
+.nutrition-item {
+  background: var(--surface-3);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 12px 14px;
+  text-align: center;
+}
+
+.nutrition-item .nutrition-label {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.nutrition-item .nutrition-value {
+  font-family: 'Spectral', serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+/* ===== Ingredient List ===== */
+.ingredient-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.ingredient-list li {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.45;
+}
+
+.ingredient-list li::before {
+  content: '';
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+  margin-top: 7px;
+}
+
+/* ===== Modal Tags ===== */
+.modal-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+/* ===== Modal Tag ===== */
+.modal-tag {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: var(--surface-3);
+  border: 1px solid var(--border-s);
+  border-radius: 2px;
+  padding: 4px 10px;
+  text-transform: capitalize;
+}
+
+/* ===== Instructions Text ===== */
+.instructions-text {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  white-space: pre-line;
+}
+
+/* ===== Benefit Text ===== */
+.benefit-text {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  background: var(--surface-3);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 3px;
+  padding: 14px 16px;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 640px) {
+  .recipe-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .filter-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .result-count {
+    margin-left: 0;
+  }
+
+  .modal-body {
+    padding: 18px 16px 22px;
+  }
+
+  .modal-header {
+    padding: 18px 16px 14px;
+  }
+}
