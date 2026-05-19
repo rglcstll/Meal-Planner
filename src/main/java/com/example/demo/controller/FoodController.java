@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.model.Food;
 import com.example.demo.model.Recipe; // Ensure this is your Recipe model
+import com.example.demo.model.User;
 import com.example.demo.repository.FoodRepository;
 import com.example.demo.service.AllergyService;
 import com.example.demo.service.MealGenerationService; // For new meal plan generation
@@ -23,9 +24,11 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Locale;
 import java.util.List;
 import java.util.ArrayList; // For getAllFoods fallback
-import java.util.stream.Collectors; // Required for the diet filtering example if you use it
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/foods") // Matches your dashboard.js foodApiUrl
@@ -79,86 +82,78 @@ public class FoodController {
                 dietType, userId != null ? userId : "N/A");
 
         try {
-            Long authenticatedUserId = null;
-            if (principal != null) {
-                authenticatedUserId = userService.getUserByEmail(principal.getUsername()).getId();
+            if (principal == null) {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(createEmptyPlan("User not authenticated."));
             }
-            if (userId != null && authenticatedUserId != null && !userId.equals(authenticatedUserId.toString())) {
+
+            User authenticatedUser = userService.getUserByEmail(principal.getUsername());
+            if (authenticatedUser == null || authenticatedUser.getId() == null) {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(createEmptyPlan("Authenticated user not found."));
+            }
+            Long authenticatedUserId = authenticatedUser.getId();
+
+            Long requestedUserId = null;
+            if (hasText(userId) && !"default".equalsIgnoreCase(userId)) {
+                try {
+                    requestedUserId = Long.parseLong(userId);
+                } catch (NumberFormatException e) {
+                    return ResponseEntity.badRequest().body(createEmptyPlan("Invalid userId parameter."));
+                }
+            }
+            if (requestedUserId != null && !requestedUserId.equals(authenticatedUserId)) {
                 return ResponseEntity.status(HttpStatus.FORBIDDEN).body(createEmptyPlan("Forbidden userId access."));
             }
-            String effectiveUserId = authenticatedUserId != null ? authenticatedUserId.toString() : userId;
+            String effectiveUserId = requestedUserId != null ? requestedUserId.toString() : null;
 
-            // 1. Fetch all available recipes from the database
-            List<Recipe> allAvailableRecipes = recipeService.getAllAvailableRecipes(); // From RecipeService_updated_with_getAllAvailable
+            List<Recipe> allAvailableRecipes = recipeService.getAllAvailableRecipes();
             if (allAvailableRecipes == null) {
                 allAvailableRecipes = Collections.emptyList();
             }
+            int beforeDietCount = allAvailableRecipes.size();
 
-            if (allAvailableRecipes.isEmpty()) {
-                logger.warn("No recipes available in the database. Meal plan will use placeholders from MealGenerationService.");
+            List<Recipe> dietFilteredRecipes = filterRecipesByDiet(allAvailableRecipes, dietType);
+            int afterDietCount = dietFilteredRecipes.size();
+
+            List<Recipe> allergyFilteredRecipes = dietFilteredRecipes;
+            if (effectiveUserId != null) {
+                allergyFilteredRecipes = allergyService.filterRecipesByAllergies(dietFilteredRecipes, effectiveUserId);
             }
-            logger.debug("Fetched {} recipes initially.", allAvailableRecipes.size());
+            int afterAllergyCount = allergyFilteredRecipes != null ? allergyFilteredRecipes.size() : 0;
 
-            List<Recipe> recipesToConsider = new ArrayList<>(allAvailableRecipes); // Use a mutable list
+            logger.info("Meal-generation pipeline counts: dietType={}, userId={}, beforeDiet={}, afterDiet={}, afterAllergy={}",
+                    safeLower(dietType), effectiveUserId != null ? effectiveUserId : authenticatedUserId, beforeDietCount, afterDietCount, afterAllergyCount);
 
-            // 2. Filter recipes by allergies if a valid userId is provided
-            if (effectiveUserId != null && !effectiveUserId.isBlank() && !"default".equalsIgnoreCase(effectiveUserId)) {
-                try {
-                    Long numericUserId = Long.parseLong(effectiveUserId);
-                    logger.info("Filtering recipes for user ID: {} (Diet: {})", numericUserId, dietType);
+            Map<String, Map<String, String>> weeklyPlan = mealGenerationService.generateWeeklyPlanDeterministic(
+                    allergyFilteredRecipes, dietType, authenticatedUser
+            );
 
-                    // Use AllergyService to filter the fetched recipes
-                    List<Recipe> filteredByAllergyRecipes = allergyService.filterRecipesByAllergies(recipesToConsider, numericUserId);
-
-                    if (filteredByAllergyRecipes.isEmpty() && !recipesToConsider.isEmpty()) {
-                        logger.warn("Allergy filtering for user ID {} resulted in zero recipes. Diet: {}. " +
-                                  "The plan will likely contain 'No suitable recipe found' for many slots.", numericUserId, dietType);
-                    }
-                    recipesToConsider = filteredByAllergyRecipes; // Update the list to consider
-                    logger.info("After allergy filtering for user ID {}, {} recipes remaining to consider.", numericUserId, recipesToConsider.size());
-
-                } catch (NumberFormatException e) {
-                    logger.warn("Invalid userId format: '{}'. Cannot parse to Long for allergy filtering. " +
-                              "Proceeding without allergy-specific filtering.", effectiveUserId, e);
-                }
-            } else {
-                logger.info("No valid userId provided or userId is 'default'. Proceeding without allergy-specific filtering. Diet: {}", dietType);
+            if (weeklyPlan == null || weeklyPlan.isEmpty()) {
+                return ResponseEntity.ok(createEmptyPlan("No suitable meals available."));
             }
-
-            // 3. (Optional but Recommended) Filter recipesToConsider further by 'dietType'
-            // This requires your Recipe model to have diet tags (e.g., a Set<String> or List<String> getDietaryTags())
-            if (!"standard".equalsIgnoreCase(dietType) && !recipesToConsider.isEmpty()) {
-                final String lowerDietType = dietType.toLowerCase();
-                // *** FIXED METHOD NAME HERE ***
-                recipesToConsider.removeIf(recipe -> recipe.getDietaryTags() == null ||
-                                                     recipe.getDietaryTags().stream()
-                                                           .noneMatch(tag -> tag != null && tag.equalsIgnoreCase(lowerDietType)));
-                logger.info("After diet filtering for '{}', {} recipes remaining.", dietType, recipesToConsider.size());
-                if (recipesToConsider.isEmpty()) {
-                    logger.warn("Diet filtering for '{}' resulted in zero recipes. The plan will use placeholders.", dietType);
-                }
-            }
-
-
-            // 4. Generate the weekly meal plan using the MealGenerationService
-            // MealGenerationService is from the 'meal_generation_service' artifact
-            Map<String, Map<String, String>> weeklyPlan = mealGenerationService.generateWeeklyPlan(recipesToConsider);
-
-            if (weeklyPlan == null) { // Should ideally not be null if MealGenerationService is robust
-                logger.error("MealGenerationService returned a null plan unexpectedly for diet: {}, userId: {}.",
-                        dietType, userId != null ? userId : "N/A");
-                return ResponseEntity.ok(createEmptyPlan("Error generating plan. Please try again."));
-            }
-
-            logger.info("Controller: Successfully generated and returning meal plan for diet: '{}', UserID: '{}'",
-                    dietType, userId != null ? userId : "N/A");
             return ResponseEntity.ok(weeklyPlan);
 
+        } catch (IllegalArgumentException e) {
+            logger.warn("Meal generation request rejected: {}", e.getMessage());
+            return ResponseEntity.badRequest().body(createEmptyPlan("Invalid request."));
         } catch (Exception e) {
             logger.error("Critical error in FoodController while generating meal plan for diet '{}', UserID '{}': {}",
                     dietType, userId != null ? userId : "N/A", e.getMessage(), e);
             return ResponseEntity.internalServerError().body(createEmptyPlan("Server error generating plan."));
         }
+    }
+
+    private List<Recipe> filterRecipesByDiet(List<Recipe> recipes, String dietType) {
+        String normalizedDiet = safeLower(dietType);
+        if (!hasText(normalizedDiet) || "standard".equals(normalizedDiet) || "balanced".equals(normalizedDiet)) {
+            return new ArrayList<>(recipes);
+        }
+        return recipes.stream()
+                .filter(Objects::nonNull)
+                .filter(recipe -> recipe.getDietaryTags() != null && recipe.getDietaryTags().stream()
+                        .filter(Objects::nonNull)
+                        .map(this::safeLower)
+                        .anyMatch(normalizedDiet::equals))
+                .collect(Collectors.toList());
     }
 
     /**
@@ -180,6 +175,14 @@ public class FoodController {
         }
         logger.debug("Created empty plan structure with default message: {}", defaultMessage);
         return emptyPlan;
+    }
+
+    private boolean hasText(String value) {
+        return value != null && !value.trim().isEmpty();
+    }
+
+    private String safeLower(String value) {
+        return value == null ? "" : value.toLowerCase(Locale.ROOT).trim();
     }
 
     /**

@@ -54,6 +54,7 @@ function constructApiUrl(apiEndpoint) {
 }
 // Modal Elements
 let benefitModal, benefitMealNameElem, benefitMealDescriptionElem, closeModalButton;
+let appAlertModal, appAlertTitleElem, appAlertMessageElem, appAlertOkBtn, appAlertCloseBtn;
 
 
 // ==========================================================================
@@ -86,13 +87,32 @@ document.addEventListener("DOMContentLoaded", async function () {
     benefitMealNameElem = document.getElementById('benefitMealName');
     benefitMealDescriptionElem = document.getElementById('benefitMealDescription');
     closeModalButton = benefitModal ? benefitModal.querySelector('.close-button') : null;
+    appAlertModal = document.getElementById('appAlertModal');
+    appAlertTitleElem = document.getElementById('appAlertTitle');
+    appAlertMessageElem = document.getElementById('appAlertMessage');
+    appAlertOkBtn = document.getElementById('appAlertOkBtn');
+    appAlertCloseBtn = document.getElementById('appAlertCloseBtn');
 
     if (closeModalButton) {
         closeModalButton.addEventListener('click', closeBenefitModal);
     }
+    if (appAlertOkBtn) {
+        appAlertOkBtn.addEventListener('click', closeAppAlertModal);
+    }
+    if (appAlertCloseBtn) {
+        appAlertCloseBtn.addEventListener('click', closeAppAlertModal);
+    }
     window.addEventListener('click', function(event) {
         if (event.target == benefitModal) {
             closeBenefitModal();
+        }
+        if (event.target == appAlertModal) {
+            closeAppAlertModal();
+        }
+    });
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape' && appAlertModal && appAlertModal.style.display === 'block') {
+            closeAppAlertModal();
         }
     });
 
@@ -286,15 +306,15 @@ async function handleGenerateMealPlanClick() {
     const goalSelect = document.getElementById('goalSelect');
 
     if (goalSelect && !goalSelect.value) {
-        alert("Please select a Nutrition Goal first.");
+        showAppAlert("Please select a Nutrition Goal first.");
         return;
     }
     if (dietSelect && dietSelect.disabled && dietSelect.value === "") { // Check if it's disabled AND has no value
-        alert("Please select a Nutrition Goal first to enable Dietary Preference, or a Dietary Preference if enabled.");
+        showAppAlert("Please select a Nutrition Goal first to enable Dietary Preference, or a Dietary Preference if enabled.");
         return;
     }
     if (dietSelect && !dietSelect.disabled && !dietSelect.value) { // Enabled but no value selected
-        alert("Please select a Dietary Preference.");
+        showAppAlert("Please select a Dietary Preference.");
         return;
     }
 
@@ -1209,11 +1229,11 @@ async function saveCurrentGeneratedPlan() {
     const dateToSave = mealDateInput ? mealDateInput.value : currentMealPlanDate;
 
     if (!dateToSave) {
-        alert('Please ensure a date is selected to save the plan.');
+        showAppAlert('Please ensure a date is selected to save the plan.');
         return;
     }
     if (!currentMealPlan || Object.keys(currentMealPlan).length === 0) {
-        alert('No meal plan data to save. Please generate or add meals first.');
+        showAppAlert('No meal plan data to save. Please generate or add meals first.');
         return;
     }
 
@@ -2105,14 +2125,33 @@ function exportToShoppingApp() {
     const listText = generateGroceryListText();
     if (navigator.clipboard && window.isSecureContext) { // Check for modern clipboard API support
         navigator.clipboard.writeText(listText)
-            .then(() => { alert('Grocery list copied to clipboard!'); })
+            .then(() => { showAppAlert('Grocery list copied to clipboard!'); })
             .catch(err => { // Handle errors (e.g., permission denied)
-                alert('Could not copy list automatically. See console for manual copy.');
+                showAppAlert('Could not copy list automatically. See console for manual copy.');
                 console.log("--- Grocery List for Manual Copy ---\n", listText);
             });
     } else { // Fallback for older browsers or non-secure contexts
-        alert('Clipboard API not available. Please copy the list manually from the console.');
+        showAppAlert('Clipboard API not available. Please copy the list manually from the console.');
         console.log("--- Grocery List for Manual Copy ---\n", listText);
+    }
+}
+
+function showAppAlert(message, title = "Meal Planner says") {
+    if (!appAlertModal || !appAlertMessageElem || !appAlertTitleElem) {
+        window.alert(message);
+        return;
+    }
+    appAlertTitleElem.textContent = title;
+    appAlertMessageElem.textContent = message || "Something happened.";
+    appAlertModal.style.display = 'block';
+    if (appAlertOkBtn) {
+        appAlertOkBtn.focus();
+    }
+}
+
+function closeAppAlertModal() {
+    if (appAlertModal) {
+        appAlertModal.style.display = 'none';
     }
 }
 
