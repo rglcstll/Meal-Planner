@@ -8,7 +8,12 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "meal_plans")
+@Table(
+    name = "meal_plans",
+    uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"user_id", "date"})
+    }
+)
 public class MealPlan {
 
     @Id

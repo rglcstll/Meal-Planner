@@ -59,6 +59,9 @@ public class MealGenerationService {
 
             if (tags != null && !tags.isEmpty()) {
                 for (String tag : tags) {
+                    if (tag == null) {
+                        continue;
+                    }
                     String lowerTag = tag.toLowerCase();
                     if (lowerTag.contains("breakfast")) {
                         breakfastRecipes.add(recipe);

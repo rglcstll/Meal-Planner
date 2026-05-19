@@ -14,6 +14,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -93,12 +94,15 @@ public class ShoppingListService {
      * Generates a shopping list from a meal plan by its ID.
      */
     @Transactional(readOnly = true)
-    public ShoppingListDTO generateShoppingListByMealPlanId(Long mealPlanId) {
-        log.info("Generating shopping list for meal plan ID: {}", mealPlanId);
+    public ShoppingListDTO generateShoppingListByMealPlanId(Long mealPlanId, Long authenticatedUserId) {
+        log.info("Generating shopping list for meal plan ID: {} and user {}", mealPlanId, authenticatedUserId);
 
-        Optional<MealPlan> mealPlanOpt = mealPlanRepository.findById(mealPlanId);
+        Optional<MealPlan> mealPlanOpt = mealPlanRepository.findByIdAndUserId(mealPlanId, authenticatedUserId);
         if (mealPlanOpt.isEmpty()) {
             log.warn("Meal plan not found with ID: {}", mealPlanId);
+            if (mealPlanRepository.findById(mealPlanId).isPresent()) {
+                throw new AccessDeniedException("You cannot access another user's meal plan.");
+            }
             return createEmptyShoppingList(mealPlanId, "Meal plan not found");
         }
 
@@ -109,10 +113,10 @@ public class ShoppingListService {
      * Generates a shopping list from a meal plan by its date.
      */
     @Transactional(readOnly = true)
-    public ShoppingListDTO generateShoppingListByDate(LocalDate date) {
-        log.info("Generating shopping list for meal plan date: {}", date);
+    public ShoppingListDTO generateShoppingListByDate(LocalDate date, Long authenticatedUserId) {
+        log.info("Generating shopping list for user {} and meal plan date: {}", authenticatedUserId, date);
 
-        Optional<MealPlan> mealPlanOpt = mealPlanRepository.findByDate(date);
+        Optional<MealPlan> mealPlanOpt = mealPlanRepository.findByUserIdAndDate(authenticatedUserId, date);
         if (mealPlanOpt.isEmpty()) {
             log.warn("Meal plan not found for date: {}", date);
             return createEmptyShoppingList(null, "No meal plan for this date");

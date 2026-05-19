@@ -6,8 +6,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.security.web.SecurityFilterChain;
-// import org.springframework.security.web.csrf.CookieCsrfTokenRepository; // Example for CSRF
 
 @Configuration
 @EnableWebSecurity
@@ -21,12 +21,9 @@ public class SecurityConfig {
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            // CSRF Configuration:
-            // KEEP DISABLED FOR NOW to simplify Tomcat deployment troubleshooting.
-            // For production, you SHOULD enable CSRF. If you do, ensure Thymeleaf forms
-            // include the CSRF token (usually automatic) and AJAX POST/PUT/DELETE requests
-            // also include the token in headers.
-            .csrf((csrf) -> csrf.disable()) // Keep CSRF disabled for initial troubleshooting
+            .csrf((csrf) -> csrf
+                .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+            )
 
             .authorizeHttpRequests((authorize) -> authorize
                 // Publicly accessible paths

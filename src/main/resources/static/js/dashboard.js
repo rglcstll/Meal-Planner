@@ -798,7 +798,7 @@ async function fetchUserAllergies() {
         return;
     }
     try {
-		const fullEndpoint = constructApiUrl(`${allergiesApiUrl}/user/${currentUserId}`);
+		const fullEndpoint = constructApiUrl(`${allergiesApiUrl}/me`);
         const response = await fetch(fullEndpoint);
         if (!response.ok) {
             if (response.status === 404) { // User has no allergies saved
@@ -917,7 +917,7 @@ async function addAllergy() {
         showNotification(`Adding ${allergyName} to your allergies...`, 1000);
 		
 		// Corrected version for addAllergy
-		const path = `${allergiesApiUrl}/user/${currentUserId}?allergyName=${encodeURIComponent(allergyName)}`;
+		const path = `${allergiesApiUrl}/me?allergyName=${encodeURIComponent(allergyName)}`;
 		const fullEndpoint = constructApiUrl(path);
 		const response = await fetch(fullEndpoint, {
 		    method: 'POST',
@@ -945,7 +945,7 @@ async function removeAllergy(allergyName) {
     try {
         showNotification(`Removing ${allergyName} from your allergies...`, 1000);
 		// Corrected version for removeAllergy
-		const path = `${allergiesApiUrl}/user/${currentUserId}?allergyName=${encodeURIComponent(allergyName)}`;
+		const path = `${allergiesApiUrl}/me?allergyName=${encodeURIComponent(allergyName)}`;
 		const fullEndpoint = constructApiUrl(path);
 		const response = await fetch(fullEndpoint, {
 		    method: 'DELETE',
@@ -1428,7 +1428,7 @@ async function updateSlotContent(mealSlot, day, mealType, newMealName) {
                 if (currentUserId !== 'default' && currentMealPlanDate) {
                     const payload = { date: currentMealPlanDate, dayOfWeek: dayUpper, mealType: mealTypeUpper, done: false, mealName: oldMealNameInSlot };
                     try {
-                        await fetch(`${mealStatusApiUrl}/toggle`, { method: 'POST', headers: getCsrfHeaders(), body: JSON.stringify(payload) });
+                        await fetch(constructApiUrl(`${mealStatusApiUrl}/toggle`), { method: 'POST', headers: getCsrfHeaders(), body: JSON.stringify(payload) });
                         // Also update local cache for this specific meal (or remove if it's no longer relevant)
                         mealDoneStatus[mealKey] = { done: false, mealName: oldMealNameInSlot }; 
                         // Or delete mealDoneStatus[mealKey]; if you don't want to track "undone" for removed meals
@@ -1607,7 +1607,7 @@ async function checkForAllergensInRecipe(recipe, warningElement) {
     }
 
     try {
-		const fullEndpoint = constructApiUrl(`${allergiesApiUrl}/user/${currentUserId}`);
+		const fullEndpoint = constructApiUrl(`${allergiesApiUrl}/me`);
         const response = await fetch(fullEndpoint); // Fetch user's allergies
         if (!response.ok) {
             warningElement.style.display = 'none'; // Hide warning if user allergies can't be fetched

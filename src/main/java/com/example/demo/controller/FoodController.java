@@ -6,14 +6,19 @@ import com.example.demo.repository.FoodRepository;
 import com.example.demo.service.AllergyService;
 import com.example.demo.service.MealGenerationService; // For new meal plan generation
 import com.example.demo.service.RecipeService;     // For fetching recipes
+import com.example.demo.service.UserService;
 // import com.example.demo.service.MealPlanService; // This was used by the old generateMealPlan logic.
                                                  // Remove if no other methods in this controller use it.
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -33,6 +38,7 @@ public class FoodController {
     private final AllergyService allergyService; // For allergy filtering
     private final RecipeService recipeService; // For fetching all recipes
     private final MealGenerationService mealGenerationService; // For generating the plan structure
+    private final UserService userService;
 
     // If MealPlanService is used by other methods not shown, add it back to constructor and field.
     // private final MealPlanService mealPlanService;
@@ -41,12 +47,14 @@ public class FoodController {
     public FoodController(FoodRepository foodRepository,
                           AllergyService allergyService,
                           RecipeService recipeService,
-                          MealGenerationService mealGenerationService
+                          MealGenerationService mealGenerationService,
+                          UserService userService
                           /*, MealPlanService mealPlanService */) {
         this.foodRepository = foodRepository;
         this.allergyService = allergyService;
         this.recipeService = recipeService;
         this.mealGenerationService = mealGenerationService;
+        this.userService = userService;
         // this.mealPlanService = mealPlanService; // Initialize if kept
     }
 
@@ -61,14 +69,25 @@ public class FoodController {
      * or an appropriate error status.
      */
     @GetMapping("/generate-meal-plan/{dietType}")
+    @Transactional(readOnly = true)
     public ResponseEntity<Map<String, Map<String, String>>> generateMealPlan(
             @PathVariable String dietType,
-            @RequestParam(required = false) String userId) {
+            @RequestParam(required = false) String userId,
+            @AuthenticationPrincipal UserDetails principal) {
 
         logger.info("Controller: Request to generate meal plan. Diet: '{}', UserID: '{}'",
                 dietType, userId != null ? userId : "N/A");
 
         try {
+            Long authenticatedUserId = null;
+            if (principal != null) {
+                authenticatedUserId = userService.getUserByEmail(principal.getUsername()).getId();
+            }
+            if (userId != null && authenticatedUserId != null && !userId.equals(authenticatedUserId.toString())) {
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(createEmptyPlan("Forbidden userId access."));
+            }
+            String effectiveUserId = authenticatedUserId != null ? authenticatedUserId.toString() : userId;
+
             // 1. Fetch all available recipes from the database
             List<Recipe> allAvailableRecipes = recipeService.getAllAvailableRecipes(); // From RecipeService_updated_with_getAllAvailable
             if (allAvailableRecipes == null) {
@@ -83,9 +102,9 @@ public class FoodController {
             List<Recipe> recipesToConsider = new ArrayList<>(allAvailableRecipes); // Use a mutable list
 
             // 2. Filter recipes by allergies if a valid userId is provided
-            if (userId != null && !userId.isBlank() && !"default".equalsIgnoreCase(userId)) {
+            if (effectiveUserId != null && !effectiveUserId.isBlank() && !"default".equalsIgnoreCase(effectiveUserId)) {
                 try {
-                    Long numericUserId = Long.parseLong(userId);
+                    Long numericUserId = Long.parseLong(effectiveUserId);
                     logger.info("Filtering recipes for user ID: {} (Diet: {})", numericUserId, dietType);
 
                     // Use AllergyService to filter the fetched recipes
@@ -100,7 +119,7 @@ public class FoodController {
 
                 } catch (NumberFormatException e) {
                     logger.warn("Invalid userId format: '{}'. Cannot parse to Long for allergy filtering. " +
-                              "Proceeding without allergy-specific filtering.", userId, e);
+                              "Proceeding without allergy-specific filtering.", effectiveUserId, e);
                 }
             } else {
                 logger.info("No valid userId provided or userId is 'default'. Proceeding without allergy-specific filtering. Diet: {}", dietType);
@@ -113,7 +132,7 @@ public class FoodController {
                 // *** FIXED METHOD NAME HERE ***
                 recipesToConsider.removeIf(recipe -> recipe.getDietaryTags() == null ||
                                                      recipe.getDietaryTags().stream()
-                                                           .noneMatch(tag -> tag.equalsIgnoreCase(lowerDietType)));
+                                                           .noneMatch(tag -> tag != null && tag.equalsIgnoreCase(lowerDietType)));
                 logger.info("After diet filtering for '{}', {} recipes remaining.", dietType, recipesToConsider.size());
                 if (recipesToConsider.isEmpty()) {
                     logger.warn("Diet filtering for '{}' resulted in zero recipes. The plan will use placeholders.", dietType);
