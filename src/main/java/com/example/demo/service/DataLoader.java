@@ -8,11 +8,14 @@ import com.example.demo.repository.FoodRepository;
 import com.example.demo.repository.RecipeRepository;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import jakarta.annotation.PostConstruct;
+import org.flywaydb.core.Flyway;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.ApplicationArguments;
+import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,7 +33,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Component
-public class DataLoader {
+public class DataLoader implements ApplicationRunner {
 
     private static final Logger log = LoggerFactory.getLogger(DataLoader.class);
 
@@ -38,6 +41,8 @@ public class DataLoader {
     private final RecipeRepository recipeRepository;
     private final AllergyRepository allergyRepository; // Added AllergyRepository
     private final ObjectMapper objectMapper;
+    private final Environment environment;
+    private final Flyway flyway;
 
     private static List<MealDefinition> ALL_MEAL_DEFINITIONS = Collections.emptyList();
     private static List<IngredientDefinition> ALL_INGREDIENT_DEFINITIONS = Collections.emptyList();
@@ -46,11 +51,15 @@ public class DataLoader {
     public DataLoader(FoodRepository foodRepository,
                       RecipeRepository recipeRepository,
                       AllergyRepository allergyRepository, // Added to constructor
-                      ObjectMapper objectMapper) {
+                      ObjectMapper objectMapper,
+                      Environment environment,
+                      @Autowired(required = false) Flyway flyway) {
         this.foodRepository = foodRepository;
         this.recipeRepository = recipeRepository;
         this.allergyRepository = allergyRepository; // Initialize AllergyRepository
         this.objectMapper = objectMapper;
+        this.environment = environment;
+        this.flyway = flyway;
     }
 
     // RecipeDetail class remains the same
@@ -68,9 +77,10 @@ public class DataLoader {
         }
     }
 
-    @PostConstruct
     @Transactional
-    public void loadData() {
+    @Override
+    public void run(ApplicationArguments args) {
+        ensureSchemaReadiness();
         log.info("DataLoader: Initializing data loading sequence...");
 
         loadMealDefinitionsFromFile();
@@ -101,6 +111,22 @@ public class DataLoader {
         }
 
         log.info("DataLoader: Data loading sequence finished.");
+    }
+
+    private void ensureSchemaReadiness() {
+        boolean isProd = Arrays.stream(environment.getActiveProfiles())
+                .anyMatch(p -> "prod".equalsIgnoreCase(p) || "production".equalsIgnoreCase(p));
+        if (!isProd) {
+            return;
+        }
+        if (flyway == null) {
+            throw new IllegalStateException("Flyway must be enabled in production profile before data seeding.");
+        }
+        try {
+            flyway.info();
+        } catch (Exception e) {
+            throw new IllegalStateException("Production schema readiness check failed before DataLoader execution.", e);
+        }
     }
 
     private void loadMealDefinitionsFromFile() {

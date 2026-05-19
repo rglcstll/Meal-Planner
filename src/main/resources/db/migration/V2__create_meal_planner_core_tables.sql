@@ -1,3 +1,7 @@
+-- Post-baseline migration for existing production databases.
+-- V1 is reserved for baseline. This script applies only to non-baselined environments
+-- or new environments where migrations run from scratch.
+
 CREATE TABLE IF NOT EXISTS allergies (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255)

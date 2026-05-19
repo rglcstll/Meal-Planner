@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/dashboard.css}">
+    <meta name="_csrf" th:content="${_csrf.token}" />
+    <meta name="_csrf_header" th:content="${_csrf.headerName}" />
 
     <script th:inline="javascript">
         /*<![CDATA[*/
@@ -27,7 +29,9 @@
                     <button onclick="fetchMealPlanForDate(document.getElementById('mealDate').value)" class="btn btn-secondary btn-sm">Load Saved</button>
                     <button id="saveCurrentPlanBtn" class="btn btn-success btn-sm">Save Current Plan</button>
                 </div>
-				<a th:href="@{/user/logout}" class="btn btn-logout btn-sm"><i class="fas fa-sign-out-alt"></i>Logout</a>
+                <form th:action="@{/user/logout}" method="post" style="display:inline;">
+                    <button type="submit" class="btn btn-logout btn-sm"><i class="fas fa-sign-out-alt"></i>Logout</button>
+                </form>
             </div>
         </header>
 
@@ -260,6 +264,16 @@
             <h3 id="benefitMealName">Meal Name</h3>
             <h4>Potential Benefits:</h4>
             <p id="benefitMealDescription">Benefit description will appear here.</p>
+        </div>
+    </div>
+    <div id="appAlertModal" class="modal app-alert-modal" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="appAlertTitle">
+        <div class="modal-content app-alert-content">
+            <button id="appAlertCloseBtn" class="app-alert-close" type="button" aria-label="Close message">&times;</button>
+            <h3 id="appAlertTitle">Meal Planner says</h3>
+            <p id="appAlertMessage">Message</p>
+            <div class="app-alert-actions">
+                <button id="appAlertOkBtn" class="btn btn-primary" type="button">OK</button>
+            </div>
         </div>
     </div>
     <div id="notification" style="display:none;"></div>

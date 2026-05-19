@@ -2,7 +2,11 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.MealPlanDTO;
 import com.example.demo.service.MealPlanService;
+import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,11 +15,9 @@ import org.slf4j.LoggerFactory;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -25,18 +27,29 @@ public class MealPlanController {
     private static final Logger log = LoggerFactory.getLogger(MealPlanController.class);
 
     private final MealPlanService mealPlanService;
+    private final UserService userService;
 
     @Autowired
-    public MealPlanController(MealPlanService mealPlanService) {
+    public MealPlanController(MealPlanService mealPlanService, UserService userService) {
         this.mealPlanService = mealPlanService;
+        this.userService = userService;
     }
 
     @GetMapping
-    public ResponseEntity<MealPlanDTO> getMealPlanByDate(@RequestParam String date) {
+    public ResponseEntity<MealPlanDTO> getMealPlanByDate(@RequestParam String date,
+                                                         @RequestParam(required = false) Long userId,
+                                                         @AuthenticationPrincipal UserDetails principal) {
         log.info("Received request to get meal plan for date: {}", date);
         try {
+            if (principal == null) {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+            }
+            Long authenticatedUserId = userService.getUserByEmail(principal.getUsername()).getId();
+            if (userId != null && !userId.equals(authenticatedUserId)) {
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+            }
             LocalDate selectedDate = LocalDate.parse(date);
-            MealPlanDTO mealPlan = mealPlanService.getMealPlanForDate(selectedDate);
+            MealPlanDTO mealPlan = mealPlanService.getMealPlanForDate(authenticatedUserId, selectedDate);
             if (mealPlan != null) {
                  // Check if the meals map is present and empty, and if ID is null (heuristic for "not found" placeholder)
                  boolean isEffectivelyEmpty = (mealPlan.getMeals() == null || mealPlan.getMeals().isEmpty());
@@ -57,6 +70,8 @@ public class MealPlanController {
         } catch (DateTimeParseException e) {
              log.error("Error parsing date parameter: {} - {}", date, e.getMessage());
              return ResponseEntity.badRequest().body(null);
+        } catch (AccessDeniedException e) {
+             return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
         } catch (Exception e) {
              log.error("Error fetching meal plan for date {}: {}", date, e.getMessage(), e);
              return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
@@ -64,14 +79,19 @@ public class MealPlanController {
     }
 
     @PostMapping
-    public ResponseEntity<MealPlanDTO> saveOrUpdateMealPlan(@RequestBody MealPlanDTO mealPlanDto) {
+    public ResponseEntity<MealPlanDTO> saveOrUpdateMealPlan(@RequestBody MealPlanDTO mealPlanDto,
+                                                            @AuthenticationPrincipal UserDetails principal) {
         try {
+            if (principal == null) {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+            }
             log.info("Received MealPlan for saving via POST /mealplan: {}", mealPlanDto);
             if (mealPlanDto == null || mealPlanDto.getDate() == null ) {
                  log.warn("Received meal plan data is incomplete: {}", mealPlanDto);
                  throw new IllegalArgumentException("Received meal plan data is incomplete.");
             }
-            MealPlanDTO savedPlan = mealPlanService.saveOrUpdate(mealPlanDto);
+            Long authenticatedUserId = userService.getUserByEmail(principal.getUsername()).getId();
+            MealPlanDTO savedPlan = mealPlanService.saveOrUpdate(mealPlanDto, authenticatedUserId);
             if (savedPlan == null) {
                  log.error("Service failed to save or update meal plan for date {}", mealPlanDto.getDate());
                  return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
@@ -82,6 +102,9 @@ public class MealPlanController {
         } catch (IllegalArgumentException e) {
             log.error("Error saving meal plan - Invalid data: {}", e.getMessage());
             return ResponseEntity.badRequest().body(null);
+        } catch (AccessDeniedException e) {
+            log.warn("Forbidden meal-plan write: {}", e.getMessage());
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null);
         } catch (Exception e) {
             log.error("Unexpected error saving meal plan: {}", e.getMessage(), e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);

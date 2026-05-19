@@ -1134,6 +1134,72 @@ input:checked + .toggle-slider:before {
   color: var(--text-dark);
 }
 
+/* App Alert Modal */
+.app-alert-modal {
+  z-index: 1100;
+}
+
+.app-alert-content {
+  max-width: 560px;
+  border-radius: 16px;
+  border: 2px solid #f4a7a1;
+  background: #2b1718;
+  color: #fff3f2;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.35);
+}
+
+.app-alert-content h3 {
+  margin: 0 0 12px 0;
+  color: #fff3f2;
+  font-size: 1.8rem;
+}
+
+#appAlertMessage {
+  margin: 0;
+  color: #ffd9d6;
+  line-height: 1.6;
+}
+
+.app-alert-actions {
+  margin-top: 26px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.app-alert-actions .btn {
+  min-width: 96px;
+  border-radius: 24px;
+  background: #f9b6ad;
+  color: #4a1716;
+  border-color: #f9b6ad;
+  font-weight: 700;
+}
+
+.app-alert-actions .btn:hover {
+  background: #ffc4bc;
+  border-color: #ffc4bc;
+  color: #4a1716;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(249, 182, 173, 0.35);
+}
+
+.app-alert-close {
+  position: absolute;
+  right: 14px;
+  top: 10px;
+  background: transparent;
+  border: none;
+  color: #f7c4bd;
+  font-size: 1.6rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.app-alert-close:hover,
+.app-alert-close:focus {
+  color: #ffe4e0;
+}
+
 
 /* Responsive Adjustments */
 @media (max-width: 992px) { 

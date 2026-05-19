@@ -13,6 +13,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -203,12 +204,15 @@ public class MealPlanService {
     }
 
     @Transactional(readOnly = true)
-    public MealPlanDTO getMealPlanForDate(LocalDate date) {
-        log.info("Fetching saved meal plan for date: {}", date);
-        Optional<MealPlan> mealPlanOpt = mealPlanRepository.findByDate(date);
+    public MealPlanDTO getMealPlanForDate(Long userId, LocalDate date) {
+        if (userId == null) {
+            throw new IllegalArgumentException("Authenticated user ID is required.");
+        }
+        log.info("Fetching saved meal plan for user {} and date: {}", userId, date);
+        Optional<MealPlan> mealPlanOpt = mealPlanRepository.findByUserIdAndDate(userId, date);
 
         if (mealPlanOpt.isEmpty()) {
-            log.warn("No saved meal plan found for date: {}", date);
+            log.warn("No saved meal plan found for user {} on date: {}", userId, date);
             return null;
         }
         MealPlan mealPlan = mealPlanOpt.get();
@@ -217,13 +221,22 @@ public class MealPlanService {
     }
 
     @Transactional
-    public MealPlanDTO saveOrUpdate(MealPlanDTO mealPlanDto) {
+    public MealPlanDTO saveOrUpdate(MealPlanDTO mealPlanDto, Long authenticatedUserId) {
         log.info("Service: Attempting to save/update meal plan for date: {}", mealPlanDto.getDate());
+
+        if (authenticatedUserId == null) {
+            throw new IllegalArgumentException("Authenticated user ID is required.");
+        }
 
         if (mealPlanDto == null || mealPlanDto.getDate() == null || mealPlanDto.getDate().isBlank()) {
             log.error("MealPlanDTO and Date are required to save a meal plan. DTO: {}", mealPlanDto);
             throw new IllegalArgumentException("MealPlanDTO and Date are required to save a meal plan.");
         }
+
+        if (mealPlanDto.getUserId() != null && !mealPlanDto.getUserId().equals(authenticatedUserId)) {
+            throw new AccessDeniedException("You cannot save meal plans for another user.");
+        }
+
         LocalDate planDate;
         try {
             planDate = LocalDate.parse(mealPlanDto.getDate());
@@ -232,29 +245,13 @@ public class MealPlanService {
             throw new IllegalArgumentException("Invalid date format. Please use yyyy-MM-dd.");
         }
 
-        User userEntity = null;
-        Long userIdFromDto = mealPlanDto.getUserId(); // Assuming MealPlanDTO.getUserId() returns Long
+        User userEntity = userRepository.findById(authenticatedUserId)
+                .orElseThrow(() -> {
+                    log.error("User not found with ID: {} for saving meal plan.", authenticatedUserId);
+                    return new RuntimeException("User not found with ID: " + authenticatedUserId + " for saving meal plan.");
+                });
 
-        if (userIdFromDto != null) {
-            userEntity = userRepository.findById(userIdFromDto)
-                    .orElseThrow(() -> {
-                        log.error("User not found with ID: {} for saving meal plan.", userIdFromDto);
-                        return new RuntimeException("User not found with ID: " + userIdFromDto + " for saving meal plan.");
-                    });
-        } else {
-            log.warn("No valid userId provided in MealPlanDTO (userId is null). Saving plan without specific user association.");
-        }
-
-        final User finalUserEntity = userEntity;
-
-        Optional<MealPlan> existingPlanOpt = mealPlanRepository.findByDate(planDate)
-            .filter(mp -> {
-                if (finalUserEntity != null) {
-                    return mp.getUser() != null && finalUserEntity.getId().equals(mp.getUser().getId());
-                } else {
-                    return mp.getUser() == null;
-                }
-            });
+        Optional<MealPlan> existingPlanOpt = mealPlanRepository.findByUserIdAndDate(authenticatedUserId, planDate);
 
         MealPlan mealPlanEntity;
         if (existingPlanOpt.isPresent()) {
@@ -272,7 +269,7 @@ public class MealPlanService {
             mealPlanEntity.setMeals(new ArrayList<>());
         }
 
-        mealPlanEntity.setUser(finalUserEntity);
+        mealPlanEntity.setUser(userEntity);
 
         Map<String, Map<String, String>> mealsMapFromDto = mealPlanDto.getMeals();
         Set<Recipe> recipesToAssociate = new HashSet<>();

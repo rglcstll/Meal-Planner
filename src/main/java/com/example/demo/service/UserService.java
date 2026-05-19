@@ -26,6 +26,12 @@ import java.util.stream.Collectors;
 
 @Service
 public class UserService implements UserDetailsService { // Implement UserDetailsService if not already
+    private static final int MIN_AGE = 13;
+    private static final int MAX_AGE = 120;
+    private static final int MIN_HEIGHT_CM = 50;
+    private static final int MAX_HEIGHT_CM = 300;
+    private static final int MIN_WEIGHT_KG = 1;
+    private static final int MAX_WEIGHT_KG = 500;
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
@@ -109,6 +115,30 @@ public class UserService implements UserDetailsService { // Implement UserDetail
         if (!StringUtils.hasText(user.getPassword())) {
             // This check might be redundant if password encoding happens before this
             throw new IllegalArgumentException("Password is required.");
+        }
+        if (user.getAge() == null) {
+            throw new IllegalArgumentException("Age is required.");
+        }
+        if (user.getAge() < MIN_AGE || user.getAge() > MAX_AGE) {
+            throw new IllegalArgumentException("Age must be between " + MIN_AGE + " and " + MAX_AGE + ".");
+        }
+        if (user.getHeight() == null) {
+            throw new IllegalArgumentException("Height is required.");
+        }
+        if (user.getHeight() < MIN_HEIGHT_CM || user.getHeight() > MAX_HEIGHT_CM) {
+            throw new IllegalArgumentException("Height must be between " + MIN_HEIGHT_CM + " and " + MAX_HEIGHT_CM + " cm.");
+        }
+        if (user.getWeight() == null) {
+            throw new IllegalArgumentException("Weight is required.");
+        }
+        if (user.getWeight() < MIN_WEIGHT_KG || user.getWeight() > MAX_WEIGHT_KG) {
+            throw new IllegalArgumentException("Weight must be between " + MIN_WEIGHT_KG + " and " + MAX_WEIGHT_KG + " kg.");
+        }
+        if (!StringUtils.hasText(user.getGender())) {
+            throw new IllegalArgumentException("Gender is required.");
+        }
+        if (!StringUtils.hasText(user.getActivityLevel())) {
+            throw new IllegalArgumentException("Activity level is required.");
         }
         // Add other validations as needed (age, gender, etc.)
     }

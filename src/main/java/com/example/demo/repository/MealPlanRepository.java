@@ -15,6 +15,12 @@ public interface MealPlanRepository extends JpaRepository<MealPlan, Long> {
     // Method to find meal plans by user's email (if you keep user-specific plans this way)
     List<MealPlan> findByUserEmail(String userEmail);
 
+    Optional<MealPlan> findByUserAndDate(User user, LocalDate date);
+
+    Optional<MealPlan> findByUserIdAndDate(Long userId, LocalDate date);
+
+    Optional<MealPlan> findByIdAndUserId(Long mealPlanId, Long userId);
+
     /**
      * Finds a meal plan by its specific date.
      * Since a user should ideally have only one plan per date (or one plan globally per date),
